@@ -1,0 +1,15 @@
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\bin\Debug\I challenge you 3.0.exe.config
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\bin\Debug\I challenge you 3.0.exe
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\bin\Debug\I challenge you 3.0.pdb
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0.csproj.AssemblyReference.cache
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\MainWindow.g.cs
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\App.g.cs
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0_MarkupCompile.cache
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0_MarkupCompile.lref
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\MainWindow.baml
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0.g.resources
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I_challenge_you_3._0.Properties.Resources.resources
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0.csproj.GenerateResource.cache
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0.csproj.CoreCompileInputs.cache
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0.exe
+C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\I challenge you 3.0.pdb
