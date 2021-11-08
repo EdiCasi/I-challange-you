@@ -12,13 +12,17 @@ namespace I_challenge_you_3._0.DataAccessLayers
 {
     class UserDAL
     {
-        public static User getUser()
+        public static User getUser(String username,String password)
         {
             using (SqlConnection con = DALHelper.Connection)
             {
                 SqlCommand cmd = new SqlCommand("getUser", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter user = new SqlParameter("@username", username);
+                SqlParameter pass = new SqlParameter("@password", password);
 
+                cmd.Parameters.Add(user);
+                cmd.Parameters.Add(pass);
                 con.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
