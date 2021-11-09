@@ -351,3 +351,4 @@ MigrationBackup/
 
 ## Ignore App.config
 I challenge you 3.0/App.config
+*.config
