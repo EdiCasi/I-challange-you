@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\obj\Debug\
+E:\Facultate\Anul III\IS\IS---Echipa-Racheta\I challenge you 3.0\obj\Debug\
 I_challenge_you_3._0
 none
 false
 DEBUG;TRACE
-C:\Users\Edi\source\repos\I challenge you 3.0\I challenge you 3.0\App.xaml
-11151548125
+E:\Facultate\Anul III\IS\IS---Echipa-Racheta\I challenge you 3.0\App.xaml
+4-1923361550
 
-10929861396
+13759993022
 141066371409
-MainWindow.xaml;
+Pages\HomePage.xaml;Pages\LoginPage.xaml;MainWindow.xaml;Pages\ProfilePage.xaml;
 
-False
+True
 
