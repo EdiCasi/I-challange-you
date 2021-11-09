@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace I_challenge_you_3._0.Model
 {
-    class User
+    public class User
     {
         public int IdUser { get; set; }
         public string Email { get; set; }
