@@ -21,5 +21,16 @@
             Margin="0 0 0 0"
             Content="{Binding loggedUser.Email}">
         </Label>
+        <Button
+            Height="35"
+            Width="100"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            Margin="0 0 0 50"
+            Content="Back"
+            FontSize="18"
+            FontWeight="Bold"
+            Click="Back_Click"
+        ></Button>
     </Grid>
 </Page>

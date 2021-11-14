@@ -17,5 +17,16 @@
             Click="Profile_Click"
             Content="{Binding loggedUser.Username}">
         </Button>
+        <Button
+            Height="50"
+            Width="50"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Margin="0 100 0 0"
+            Click="NewPost_Click"
+            Content="+"
+            FontSize="18"
+            FontWeight="Bold"
+        ></Button>
     </Grid>
 </Page>

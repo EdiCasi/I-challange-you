@@ -39,5 +39,10 @@ namespace I_challenge_you_3._0
         {
             NavigationService.Navigate(new ProfilePage(loggedUser));
         }
+
+        private void NewPost_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CreatePostPage(loggedUser));
+        }
     }
 }
