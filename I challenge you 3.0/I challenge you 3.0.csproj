@@ -73,8 +73,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\UserConverter.cs" />
+    <Compile Include="DataAccessLayers\PostDAL.cs" />
     <Compile Include="DataAccessLayers\DALHelper.cs" />
     <Compile Include="DataAccessLayers\UserDAL.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
