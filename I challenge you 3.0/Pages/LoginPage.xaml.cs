@@ -36,7 +36,6 @@ namespace I_challenge_you_3._0
             }
             else
             {
-                MessageBox.Show(user.Email + " " + user.Username);
                 NavigationService.Navigate(new HomePage(user));
             }
         }

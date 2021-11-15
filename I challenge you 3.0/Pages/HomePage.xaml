@@ -6,7 +6,10 @@
       xmlns:local="clr-namespace:I_challenge_you_3._0"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage">
+      Width="1000"
+      Height="600"
+      Title="HomePage"
+      Background="LightSalmon">
 
     <Grid>
         <Button
