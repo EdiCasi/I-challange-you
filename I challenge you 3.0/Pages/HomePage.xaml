@@ -34,7 +34,7 @@
                 <Style TargetType="Border">
                     <Setter 
                         Property="CornerRadius"
-                        Value="20"></Setter>
+                        Value="50"></Setter>
                 </Style>
             </Button.Resources>
 
@@ -53,17 +53,15 @@
             HorizontalContentAlignment="Center"
             Margin="0 120 0 0"
             Click="NewPost_Click"
-            Content="+"
-            FontSize="18"
-            FontWeight="Bold"
         >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter 
                         Property="CornerRadius"
-                        Value="10"></Setter>
+                        Value="25"></Setter>
                 </Style>
             </Button.Resources>
+            <Image Source="pack://application:,,,/Resources/Images/PlusIcon.png"/>
         </Button>
     </Grid>
 </Page>

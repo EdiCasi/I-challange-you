@@ -22,11 +22,11 @@ namespace I_challenge_you_3._0.UserControls
     /// </summary>
     public partial class DisplayPost : UserControl
     {
-        public Post post { get; set; }
-        public DisplayPost(Post post)
+        //public Post post { get; set; }
+        public DisplayPost() //Post post
         {
             InitializeComponent();
-            this.post = post;
+            //this.post = post;
             DataContext = this;
         }
     }
