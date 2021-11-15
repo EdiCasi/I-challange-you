@@ -13,21 +13,71 @@
             BorderThickness="2"
             CornerRadius="10"
             Padding="1">
-        <StackPanel>
-            <Label
-                x:Name="usernameLabel"
-                BorderBrush="Black"
-                BorderThickness="0 0 0 1"
-                HorizontalContentAlignment="Center"
-                FontSize="18"
-                Content="Username"
-            ></Label>
-            <Label
-                x:Name="descriptionLabel"
-                FontSize="18"
-                Content="This is a Post description"
-            ></Label>
-        </StackPanel>
+            <StackPanel>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border
+                            Grid.Column="0"
+                            Height="50"
+                            Width="50"
+                            Background="Beige"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            CornerRadius="25">
+                            <Image
+                                x:Name="userImage"
+                                Source=""/>
+                        </Border>
+
+                        <Label
+                            Grid.Column="1"
+                            x:Name="usernameLabel"
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Content="Username"/>
+                    </Grid>
+                </Border>
+                <Label
+                    x:Name="titleLabel"
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Content="Title"
+                    Visibility="Visible"/>
+
+                <Label
+                    x:Name="descriptionLabel"
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10"
+                    FontSize="18"
+                    Content="This is a Post description"
+                    Visibility="Visible"/>
+
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10"></Border>
+
+                <Border
+                    Padding="10">
+                    <Label 
+                        FontSize="14"
+                        Content="[Insert reactions here]"/>
+                </Border>
+            </StackPanel>
         </Border>
     </Grid>
 </UserControl>
