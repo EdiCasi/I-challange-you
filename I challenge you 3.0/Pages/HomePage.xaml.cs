@@ -1,6 +1,7 @@
 ﻿using I_challenge_you_3._0.DataAccessLayer;
 using I_challenge_you_3._0.Model;
 using I_challenge_you_3._0.Pages;
+using I_challenge_you_3._0.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,12 @@ namespace I_challenge_you_3._0
             InitializeComponent();
             this.loggedUser = user;
             DataContext = this;
+            int num = 100;
+            for (int i = 0; i < num; i++)
+            {
+                DisplayPost displayPost = new DisplayPost();
+                postPanel.Children.Add(displayPost);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

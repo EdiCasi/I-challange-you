@@ -28,5 +28,14 @@
             FontSize="18"
             FontWeight="Bold"
         ></Button>
+
+        <ScrollViewer 
+            VerticalScrollBarVisibility="Auto"
+            Margin="100 0 100 0"
+            >
+            <StackPanel
+                x:Name="postPanel"
+            ></StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
