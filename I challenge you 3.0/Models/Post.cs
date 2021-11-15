@@ -10,9 +10,9 @@ namespace I_challenge_you_3._0.Models
     {
         public int IdPost { get; set; }
         public int IdUser { get; set; }
-        public string CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
         public string Title{ get; set; }
-        public string Content { get; set; }
+        public byte[] Content { get; set; }
         public string Description { get; set; }
         public int Reactions { get; set; }
         public string PostType { get; set; }

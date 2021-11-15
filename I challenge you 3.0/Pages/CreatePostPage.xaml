@@ -96,6 +96,7 @@
             VerticalContentAlignment="Center"
             Margin="45 150 0 0"
             FontSize="18"
+            Content=""
         ></Label>
 
         <Button

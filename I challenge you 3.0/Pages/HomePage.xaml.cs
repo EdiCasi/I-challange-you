@@ -1,5 +1,6 @@
 ﻿using I_challenge_you_3._0.DataAccessLayer;
-using I_challenge_you_3._0.Model;
+using I_challenge_you_3._0.DataAccessLayers;
+using I_challenge_you_3._0.Models;
 using I_challenge_you_3._0.Pages;
 using I_challenge_you_3._0.UserControls;
 using System;
@@ -30,12 +31,17 @@ namespace I_challenge_you_3._0
         public HomePage(User user)
         {
             InitializeComponent();
-            this.loggedUser = user;
             DataContext = this;
-            int num = 100;
-            for (int i = 0; i < num; i++)
+            this.loggedUser = user;
+            loadPosts();
+        }
+
+        public void loadPosts()
+        {
+            List<Post> posts = PostDAL.getPosts(loggedUser.IdUser);
+            foreach (var post in posts )
             {
-                DisplayPost displayPost = new DisplayPost();
+                DisplayPost displayPost = new DisplayPost(post);
                 displayPost.Padding = new Thickness(10);
                 postPanel.Children.Add(displayPost);
             }

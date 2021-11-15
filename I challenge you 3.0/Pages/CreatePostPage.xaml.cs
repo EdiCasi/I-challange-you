@@ -1,4 +1,5 @@
-﻿using I_challenge_you_3._0.Model;
+﻿using I_challenge_you_3._0.DataAccessLayers;
+using I_challenge_you_3._0.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -38,9 +39,48 @@ namespace I_challenge_you_3._0.Pages
             NavigationService.Navigate(new HomePage(loggedUser));
         }
 
+        private bool ValidateInput()
+        {
+            if(
+                String.IsNullOrWhiteSpace(titleTextbox.Text) ||
+                (String.IsNullOrWhiteSpace(descriptionTextbox.Text) && String.IsNullOrWhiteSpace(contentPath.Content.ToString()))
+            )
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void CreatePost()
+        {
+            Post newPost = new Post();
+            newPost.IdUser = loggedUser.IdUser;
+            newPost.CreationDate = DateTime.UtcNow;
+            newPost.Title = titleTextbox.Text;
+            newPost.Description = descriptionTextbox.Text;
+            newPost.Content = new byte[64];
+            newPost.Reactions = 1;
+            newPost.PostType = "Default";
+
+            PostDAL.addPost(newPost);
+        }
+
         private void Post_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Title: " + titleTextbox.Text + "\n\nDescription: " + descriptionTextbox.Text + "\n\nContent Path: " + contentPath.Content);
+            if(!ValidateInput())
+            {
+                MessageBox.Show("Make sure the Title and either a Media File or Description is specified.");
+                return;
+            }
+            try
+            {
+                CreatePost();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show("Error: " + exception.Message);
+                return;
+            }
             MessageBox.Show("Post created successfully!");
             NavigationService.Navigate(new HomePage(loggedUser));
         }

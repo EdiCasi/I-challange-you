@@ -23,11 +23,13 @@ namespace I_challenge_you_3._0.UserControls
     public partial class DisplayPost : UserControl
     {
         public Post post { get; set; }
+        public User postUser { get; set; }
         public DisplayPost(Post post)
         {
             InitializeComponent();
-            this.post = post;
             DataContext = this;
+            this.post = post;
+            this.postUser = UserDAL.getUserById(post.IdUser);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
 {
     class PostDAL
     {
-        public static List<Post> getPost(int idUser)
+        public static List<Post> getPosts(int idUser)
         {
             List<Post> allPosts = new List<Post>();
             using (SqlConnection con = DALHelper.Connection)
@@ -29,12 +29,14 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 {
                     allPosts.Add(new Post()
                     {
-                        CreationDate = reader["creationDate"].ToString(),
+                        IdPost = (int)reader["postId"],
+                        IdUser = (int)reader["userId"],
+                        CreationDate = DateTime.Parse(reader["creationDate"].ToString()),
                         Title = reader["title"].ToString(),
-                        Content = reader["contentPost"].ToString(),
+                        Content = Encoding.ASCII.GetBytes(reader["contentPost"].ToString()),
                         Description = reader["description"].ToString(),
                         Reactions = (int)reader["reactions"],
-                        PostType = reader["postType"].ToString(),
+                        PostType = reader["postType"].ToString()
                     });
                 }
                 reader.Close();
@@ -42,33 +44,23 @@ namespace I_challenge_you_3._0.DataAccessLayers
             return allPosts;
         }
 
-        public static void addPost(int userId, String creationDate, String title, String content, String description, int reactions, String postType)
+        public static void addPost(Post post)
         {
             using(SqlConnection con = DALHelper.Connection)
             {
-                using (SqlCommand queryAddPost = new SqlCommand())
-                {
-                    queryAddPost.Connection = con;
-                    queryAddPost.CommandType = CommandType.Text;
-                    queryAddPost.CommandText ="INSERT into dbo.Post (userId, creationDate, title, contentPost, description, reactions, postType) VALUES (@idUser, @postCreationDate, @postTitle, @postContent, @postDescription, @postReactions, @postPostType)";
-                    queryAddPost.Parameters.AddWithValue("@idUser", userId);
-                    queryAddPost.Parameters.AddWithValue("@postCreationDate", creationDate);
-                    queryAddPost.Parameters.AddWithValue("@postTitle", title);
-                    queryAddPost.Parameters.AddWithValue("@postContent", content);
-                    queryAddPost.Parameters.AddWithValue("@postDescription", description);
-                    queryAddPost.Parameters.AddWithValue("@postReactions", reactions);
-                    queryAddPost.Parameters.AddWithValue("@postPostType", postType);
+                SqlCommand cmd = new SqlCommand("createPost",con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@userId", SqlDbType.Int).Value = post.IdUser;
+                cmd.Parameters.Add("@creationDate", SqlDbType.Date).Value = post.CreationDate;
+                cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = post.Title;
+                cmd.Parameters.Add("@contentPost", SqlDbType.VarBinary).Value = post.Content;
+                cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = post.Description;
+                cmd.Parameters.Add("@reactions", SqlDbType.Int).Value = post.Reactions;
+                cmd.Parameters.Add("@postType", SqlDbType.VarChar).Value = post.PostType;
 
-                    try
-                    {
-                        con.Open();
-                        int recordsAffected = queryAddPost.ExecuteNonQuery();
-                    }
-                    catch (SqlException)
-                    {
-                        //error
-                    }
-                }
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
     }
