@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace I_challenge_you_3._0.Models
 {
-    class Post
+    public class Post
     {
         public int IdPost { get; set; }
         public int IdUser { get; set; }
