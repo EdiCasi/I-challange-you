@@ -11,8 +11,7 @@
             Background="LightGray"
             BorderBrush="Black"
             BorderThickness="2"
-            CornerRadius="10"
-            Padding="1">
+            CornerRadius="10">
             <StackPanel>
                 <Border
                     BorderBrush="Black"

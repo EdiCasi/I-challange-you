@@ -36,6 +36,7 @@ namespace I_challenge_you_3._0
             for (int i = 0; i < num; i++)
             {
                 DisplayPost displayPost = new DisplayPost();
+                displayPost.Padding = new Thickness(10);
                 postPanel.Children.Add(displayPost);
             }
         }

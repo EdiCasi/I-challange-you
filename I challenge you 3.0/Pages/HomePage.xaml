@@ -9,33 +9,61 @@
       Title="HomePage">
 
     <Grid>
-        <Button
-            Height="100"
-            Width="100"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Click="Profile_Click"
-            Content="{Binding loggedUser.Username}">
-        </Button>
-        <Button
-            Height="50"
-            Width="50"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Margin="0 100 0 0"
-            Click="NewPost_Click"
-            Content="+"
-            FontSize="18"
-            FontWeight="Bold"
-        ></Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="120"/>
+        </Grid.ColumnDefinitions>
 
         <ScrollViewer 
-            VerticalScrollBarVisibility="Auto"
-            Margin="100 0 100 0"
-            >
+            Grid.Column="0"
+            VerticalScrollBarVisibility="Hidden">
             <StackPanel
                 x:Name="postPanel"
             ></StackPanel>
         </ScrollViewer>
+        
+        <Button
+            Grid.Column="1"
+            Height="100"
+            Width="100"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Margin="0 10 0 0"
+            Click="Profile_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="20"></Setter>
+                </Style>
+            </Button.Resources>
+
+            <Image
+                x:Name="userImage"
+                Source=""/>
+        </Button>
+
+        <Button
+            Grid.Column="1"
+            Height="50"
+            Width="50"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Margin="0 120 0 0"
+            Click="NewPost_Click"
+            Content="+"
+            FontSize="18"
+            FontWeight="Bold"
+        >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using I_challenge_you_3._0.DataAccessLayers;
+using I_challenge_you_3._0.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,12 @@ namespace I_challenge_you_3._0.UserControls
     /// </summary>
     public partial class DisplayPost : UserControl
     {
-        public DisplayPost()
+        public Post post { get; set; }
+        public DisplayPost(Post post)
         {
             InitializeComponent();
+            this.post = post;
+            DataContext = this;
         }
     }
 }

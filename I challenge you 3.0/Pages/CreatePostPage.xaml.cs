@@ -40,7 +40,7 @@ namespace I_challenge_you_3._0.Pages
 
         private void Post_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Content Path:\n" + contentPath.Content + "\n\nDescription:\n" + descriptionTextbox.Text);
+            MessageBox.Show("Title: " + titleTextbox.Text + "\n\nDescription: " + descriptionTextbox.Text + "\n\nContent Path: " + contentPath.Content);
             MessageBox.Show("Post created successfully!");
             NavigationService.Navigate(new HomePage(loggedUser));
         }

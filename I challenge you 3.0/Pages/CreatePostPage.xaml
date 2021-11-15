@@ -11,8 +11,6 @@
     <Grid>
         <Label
             Content="New Post"
-            Height="50"
-            Width="200"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             VerticalContentAlignment="Center"
@@ -27,7 +25,49 @@
             FontSize="18"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Margin="0 0 525 200"
+            Margin="0 50 525 300"
+            Content="Title:"
+        ></Label>
+
+        <TextBox
+            x:Name="titleTextbox"
+            Height="35"
+            Width="400"
+            Margin="0 50 0 300"
+            FontSize="18"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            VerticalScrollBarVisibility="Auto"
+        ></TextBox>
+
+        <Label
+            Height="35"
+            Width="100"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="0 50 525 100"
+            Content="Description:"
+        ></Label>
+
+        <TextBox
+            x:Name="descriptionTextbox"
+            Height="90"
+            Width="400"
+            Margin="0 50 0 100"
+            FontSize="18"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            VerticalScrollBarVisibility="Auto"
+        ></TextBox>
+
+        <Label
+            Height="35"
+            Width="100"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="0 150 525 0"
             Content="Media:"
         ></Label>
 
@@ -36,9 +76,16 @@
             Width="35"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Margin="0 0 365 200"
-            Click="UploadContent_Click"
-        ></Button>
+            Margin="0 150 365 0"
+            Click="UploadContent_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <Label
             x:Name="contentPath"
@@ -47,52 +94,46 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             VerticalContentAlignment="Center"
-            Margin="45 0 0 200"
+            Margin="45 150 0 0"
             FontSize="18"
         ></Label>
-
-        <Label
-            Height="35"
-            Width="100"
-            FontSize="18"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Margin="0 0 525 0"
-            Content="Description:"
-        ></Label>
-
-        <TextBox
-            x:Name="descriptionTextbox"
-            Height="90"
-            Width="400"
-            FontSize="18"
-            TextWrapping="Wrap"
-            AcceptsReturn="True"
-            VerticalScrollBarVisibility="Auto"
-        ></TextBox>
 
         <Button
             Height="35"
             Width="100"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Center"
-            Margin="0 0 0 100"
+            Margin="0 0 125 50"
             Content="Post"
             FontSize="18"
             FontWeight="Bold"
-            Click="Post_Click"
-        ></Button>
+            Click="Post_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <Button
             Height="35"
             Width="100"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Center"
-            Margin="0 0 0 50"
+            Margin="125 0 0 50"
             Content="Cancel"
             FontSize="18"
             FontWeight="Bold"
-            Click="Cancel_Click"
-        ></Button>
+            Click="Cancel_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>
