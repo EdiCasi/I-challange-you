@@ -30,6 +30,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 {
                     return new User()
                     {
+                        IdUser = (int)reader["userId"],
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
                     };
