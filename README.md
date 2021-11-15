@@ -9,4 +9,4 @@ Besides challenges it also features normal posts, comments, reactions, private m
 This app can bring lots of fun to all kinds of people, no matter the age or occupation.
 
 ## Important!
-After retrieving the repo create a file called "App.config" inside of "I challenge you 3.0" and copy the contents of "App_config.txt" into it replacing YOURPC with the proper Data Source.
+After retrieving the repo create a file called "App.config" inside of "I challenge you 3.0" and copy the contents of "App_config.txt" into it replacing "YOURPC" with the proper Data Source.
