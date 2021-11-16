@@ -2,7 +2,6 @@
 using I_challenge_you_3._0.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,26 +15,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace I_challenge_you_3._0.Pages
+namespace I_challenge_you_3._0.UserControls
 {
     /// <summary>
-    /// Interaction logic for ProfilePage.xaml
+    /// Interaction logic for DisplayPost.xaml
     /// </summary>
-    public partial class ProfilePage : Page
+    public partial class DisplayPost : UserControl
     {
-        public User loggedUser { get; set; }
-        public ProfilePage(User user)
+        public Post post { get; set; }
+        public User postUser { get; set; }
+        public DisplayPost(Post post)
         {
             InitializeComponent();
-            this.loggedUser = user;
             DataContext = this;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            this.post = post;
+            this.postUser = UserDAL.getUserById(post.IdUser);
         }
     }
 }
