@@ -29,5 +29,16 @@
         <TextBox Height="23" Name="ReNewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="362,394,518,183"/>
         <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="316,448,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click"/>
     </Grid>
+        <Button
+            Height="35"
+            Width="100"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            Margin="0 0 0 50"
+            Content="Back"
+            FontSize="18"
+            FontWeight="Bold"
+            Click="Back_Click"
+        ></Button>
     </Grid>
 </Page>

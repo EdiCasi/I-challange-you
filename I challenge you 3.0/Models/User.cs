@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace I_challenge_you_3._0.Model
+namespace I_challenge_you_3._0.Models
 {
     public class User
     {

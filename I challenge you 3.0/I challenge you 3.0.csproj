@@ -56,6 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\DisplayPost.xaml.cs">
+      <DependentUpon>DisplayPost.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\CreatePostPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -73,10 +80,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\UserConverter.cs" />
+    <Compile Include="DataAccessLayers\PostDAL.cs" />
     <Compile Include="DataAccessLayers\DALHelper.cs" />
     <Compile Include="DataAccessLayers\StatusDAL.cs" />
     <Compile Include="DataAccessLayers\UserDAL.cs" />
     <Compile Include="Models\StatusMap.cs" />
+    <Compile Include="Pages\CreatePostPage.xaml.cs">
+      <DependentUpon>CreatePostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -88,6 +100,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DisplayPost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,6 +138,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\PlusIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

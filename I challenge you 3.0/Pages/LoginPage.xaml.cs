@@ -1,5 +1,5 @@
 ﻿using I_challenge_you_3._0.DataAccessLayers;
-using I_challenge_you_3._0.Model;
+using I_challenge_you_3._0.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
