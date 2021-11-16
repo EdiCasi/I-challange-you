@@ -56,9 +56,9 @@ namespace I_challenge_you_3._0.Pages
 
         private void ChangePassword_Click(object sender, RoutedEventArgs e)
         {
-           if(OldPass.Text==LoggedUser.Pass)
+            if (OldPass.Text == LoggedUser.Pass)
             {
-                if(NewPass.Text == ReNewPass.Text)
+                if (NewPass.Text == ReNewPass.Text)
                 {
                     UserDAL.changePassword(LoggedUser.IdUser, NewPass.Text);
                 }
@@ -71,9 +71,10 @@ namespace I_challenge_you_3._0.Pages
             {
                 MessageBox.Show("The old password you entered is wrong");
             }
+        }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage(LoggedUser));
         }
     }
 }

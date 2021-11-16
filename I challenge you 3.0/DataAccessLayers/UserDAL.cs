@@ -33,7 +33,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         IdUser = (int)reader["userId"],
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
-                        Status = reader["status"].ToString()
+                        //Status = reader["status"].ToString()
                     };
                 }
                 reader.Close();
@@ -61,7 +61,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         IdUser = (int)reader["userId"],
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
-                        Status = reader["status"].ToString()
+                        //Status = reader["status"].ToString()
                     };
                 }
                 reader.Close();
@@ -132,34 +132,6 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-        }
-
-        public static User getUserById(int id)
-        {
-            using (SqlConnection con = DALHelper.Connection)
-            {
-                SqlCommand cmd = new SqlCommand("getUserById", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter userId = new SqlParameter("@userId", id);
-
-                cmd.Parameters.Add(userId);
-                con.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    return new User()
-                    {
-                        IdUser = (int)reader["userId"],
-                        Email = reader["email"].ToString(),
-                        Username = reader["username"].ToString(),
-                        Status = reader["status"].ToString()
-                    };
-                }
-                reader.Close();
-
-            }
-            return null;
         }
     }
 }
