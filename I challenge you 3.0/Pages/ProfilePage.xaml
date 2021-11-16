@@ -6,21 +6,29 @@
       xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProfilePage">
+      Width="1000"
+      Height="600"
+      Title="ProfilePage"
+      Background="LightSalmon">
 
     <Grid>
-        <Label 
-            Height="32" 
-            Width="360"
-            Margin="0 0 0 100"
-            Content="{Binding loggedUser.Username}">
-        </Label>
-        <Label 
-            Height="32"
-            Width="360"
-            Margin="0 0 0 0"
-            Content="{Binding loggedUser.Email}">
-        </Label>
+        <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,186,0,0" Click="EditUsername_Click"/>
+        <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,221,0,0" Click="EditEmail_Click"/>
+        <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,184,0,0"/>
+        <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,215,0,0"/>
+        <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,246,0,0"/>
+        <ComboBox Name="Statuses" HorizontalAlignment="Left" Margin="333,249,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBox Name="Username" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="333,187,0,0"/>
+        <TextBox Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="333,219,0,0"/>
+        <Grid>
+        <Label Content="Old Password"  HorizontalAlignment="Left" Margin="241,298,0,0" VerticalAlignment="Top"/>
+        <TextBox Height="23" Name="OldPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="362,301,518,276"/>
+        <Label Content="New Password"  HorizontalAlignment="Left" Margin="241,344,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,1.383"/>
+        <TextBox Height="23" Name="NewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="362,346,518,231"/>
+        <Label Content="Retype New Password"  HorizontalAlignment="Left" Margin="223,390,0,0" VerticalAlignment="Top"/>
+        <TextBox Height="23" Name="ReNewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="362,394,518,183"/>
+        <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="316,448,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click"/>
+    </Grid>
         <Button
             Height="35"
             Width="100"

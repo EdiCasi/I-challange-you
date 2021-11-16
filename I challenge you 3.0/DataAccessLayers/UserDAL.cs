@@ -41,6 +41,98 @@ namespace I_challenge_you_3._0.DataAccessLayers
             }
             return null;
         }
+      
+      public static User getUserById(int id)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getUserById", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter userId = new SqlParameter("@userId", id);
+
+                cmd.Parameters.Add(userId);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new User()
+                    {
+                        IdUser = (int)reader["userId"],
+                        Email = reader["email"].ToString(),
+                        Username = reader["username"].ToString(),
+                        Status = reader["status"].ToString()
+                    };
+                }
+                reader.Close();
+
+            }
+            return null;
+        }
+
+        public static void changeUsername(int userId, String username)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("changeUsername", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter user = new SqlParameter("@username", username);
+                SqlParameter id = new SqlParameter("@userId", userId);
+
+                cmd.Parameters.Add(user);
+                cmd.Parameters.Add(id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
+        public static void changeEmail(int userId, String email)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("changeEmail", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter mail = new SqlParameter("@email", email);
+                SqlParameter id = new SqlParameter("@userId", userId);
+
+                cmd.Parameters.Add(mail);
+                cmd.Parameters.Add(id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
+        public static void changePassword(int userId, String password)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("changePassword", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter pass = new SqlParameter("@password", password);
+                SqlParameter id = new SqlParameter("@userId", userId);
+
+                cmd.Parameters.Add(pass);
+                cmd.Parameters.Add(id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
+        public static void changeStatus(int userId, int statusId)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("ChangeStatus", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter status = new SqlParameter("@statusId", statusId);
+                SqlParameter id = new SqlParameter("@userId", userId);
+
+                cmd.Parameters.Add(status);
+                cmd.Parameters.Add(id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
         public static User getUserById(int id)
         {
