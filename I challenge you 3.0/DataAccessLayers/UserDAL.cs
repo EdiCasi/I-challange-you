@@ -133,5 +133,36 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public static void createUser(User user)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("createUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = user.Username;
+                cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = user.Email;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = user.Pass;
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+        public static Int32 verifyEmail(String email)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("verifyEmail", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter Email = new SqlParameter("@email", email);
+
+                cmd.Parameters.Add(Email);
+                con.Open();
+
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
     }
 }

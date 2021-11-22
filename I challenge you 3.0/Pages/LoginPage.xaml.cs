@@ -1,5 +1,6 @@
 ﻿using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
+using I_challenge_you_3._0.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,11 @@ namespace I_challenge_you_3._0
             {
                 NavigationService.Navigate(new HomePage(user));
             }
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegisterPage());
         }
     }
 }
