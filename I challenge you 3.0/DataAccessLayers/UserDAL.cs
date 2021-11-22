@@ -133,5 +133,70 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public static List<User> searchUsers(String username)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("searchUsers", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter user = new SqlParameter("@username", username);
+                cmd.Parameters.Add(user);
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<User> foundUsers = new List<User>();
+                while (reader.Read())
+                {
+                    User foudUser = new User()
+                    {
+                        IdUser = (int)reader["userId"],
+                        Email = reader["email"].ToString(),
+                        Username = reader["username"].ToString()
+                    };
+
+                    foundUsers.Add(foudUser);
+                }
+
+                reader.Close();
+                return foundUsers;
+            }
+        }
+
+        public static List<User> getUserFriends(int userId)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getUserFriends", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter userIdParameter = new SqlParameter("@userId", userId);
+                cmd.Parameters.Add(userIdParameter);
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<User> foundUsers = new List<User>();
+                while (reader.Read())
+                {
+                    User foudUser = new User()
+                    {
+                        IdUser = (int)reader["friend2Id"],
+                        Email = reader["email"].ToString(),
+                        Username = reader["username"].ToString(),
+                        Status = reader["statusId"].ToString()
+                    };
+
+                    foundUsers.Add(foudUser);
+                }
+
+                reader.Close();
+                return foundUsers;
+            }
+        }
     }
 }
