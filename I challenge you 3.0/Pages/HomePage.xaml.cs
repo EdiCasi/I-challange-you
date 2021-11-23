@@ -58,5 +58,15 @@ namespace I_challenge_you_3._0
         {
             NavigationService.Navigate(new CreatePostPage(loggedUser));
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SearchPage(loggedUser));
+        }
+        
+        private void Friends_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new FriendsPage(loggedUser));
+        }
     }
 }
