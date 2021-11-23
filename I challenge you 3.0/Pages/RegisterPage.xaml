@@ -122,6 +122,19 @@
             Click="Register_Click"
             Grid.Row="2"
            />
+        <Button
+            x:Name="Back"
+            Content="Back" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" 
+            Margin="452,85.2,441.6,0"
+            Height="35"
+            Width="100" 
+            FontWeight="Bold"
+            FontSize="18" 
+            Click="Back_Click"
+            Grid.Row="2"
+           />
         <Popup Name="RegisterPopup"
                Placement="Mouse"
                HorizontalOffset="150"

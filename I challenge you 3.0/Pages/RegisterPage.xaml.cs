@@ -80,5 +80,10 @@ namespace I_challenge_you_3._0.Pages
             RegisterPopup.IsOpen = false;
             NavigationService.Navigate(new LoginPage());
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LoginPage());
+        }
     }
 }
