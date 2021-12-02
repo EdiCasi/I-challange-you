@@ -37,7 +37,8 @@ namespace I_challenge_you_3._0
             }
             else
             {
-                NavigationService.Navigate(new HomePage(user));
+                MainWindow.LoggedUser = user;
+                NavigationService.Navigate(new HomePage());
             }
         }
 
