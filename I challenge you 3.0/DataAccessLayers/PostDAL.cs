@@ -33,7 +33,8 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         IdUser = (int)reader["userId"],
                         CreationDate = DateTime.Parse(reader["creationDate"].ToString()),
                         Title = reader["title"].ToString(),
-                        Content = Encoding.ASCII.GetBytes(reader["contentPost"].ToString()),
+                        Content = (byte[])reader["contentPost"],
+                        ContentType = reader["contentType"].ToString(),
                         Description = reader["description"].ToString(),
                         Reactions = (int)reader["reactions"]
                     };
@@ -65,6 +66,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 cmd.Parameters.Add("@creationDate", SqlDbType.Date).Value = post.CreationDate;
                 cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = post.Title;
                 cmd.Parameters.Add("@contentPost", SqlDbType.VarBinary).Value = post.Content;
+                cmd.Parameters.Add("@contentType", SqlDbType.VarChar).Value = post.ContentType;
                 cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = post.Description;
                 cmd.Parameters.Add("@reactions", SqlDbType.Int).Value = post.Reactions;
                 

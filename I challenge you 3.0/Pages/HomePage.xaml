@@ -29,6 +29,7 @@
             VerticalScrollBarVisibility="Hidden">
             <StackPanel
                 x:Name="postPanel"
+                Margin="0 0 0 40"
             ></StackPanel>
         </ScrollViewer>
         
@@ -49,8 +50,7 @@
             </Button.Resources>
 
             <Image
-                x:Name="userImage"
-                Source=""/>
+                x:Name="userImage"/>
         </Button>
 
         <Button

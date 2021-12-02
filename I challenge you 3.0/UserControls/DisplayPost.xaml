@@ -32,8 +32,7 @@
                             BorderThickness="1"
                             CornerRadius="25">
                             <Image
-                                x:Name="userImage"
-                                Source=""/>
+                                x:Name="userImage"/>
                         </Border>
 
                         <Label
@@ -66,9 +65,24 @@
                     Visibility="Visible"/>
 
                 <Border
+                    x:Name="contentContainer"
                     BorderBrush="Black"
                     BorderThickness="0 0 0 1"
-                    Padding="10"></Border>
+                    Padding="10" 
+                    Visibility="Collapsed">
+                    <Grid>
+                        <Image 
+                            x:Name="postImage" 
+                            Visibility="Collapsed"/>
+                        <MediaElement 
+                            x:Name="postVideo"
+                            Visibility="Collapsed"
+                            LoadedBehavior="Manual"
+                            Loaded="MediaLoaded"
+                            MouseDown="MediaPlayToggle"
+                            MediaEnded="MediaEnded"/>
+                    </Grid>
+                </Border>
 
                 <Border
                     Padding="10">

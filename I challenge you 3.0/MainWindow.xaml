@@ -9,7 +9,9 @@
         WindowStartupLocation="CenterScreen"
         Height="600" 
         Width="1000"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" x:Name="frame" Source="Pages/LoginPage.xaml">
         </Frame>
