@@ -214,9 +214,10 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 List<User> foundUsers = new List<User>();
                 while (reader.Read())
                 {
+                    int friendId = (int)reader["friend1Id"] == userId ? (int)reader["friend2Id"] : (int)reader["friend1Id"];
                     User foudUser = new User()
                     {
-                        IdUser = (int)reader["friend2Id"],
+                        IdUser = friendId,
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
                         Status = reader["statusId"].ToString()
