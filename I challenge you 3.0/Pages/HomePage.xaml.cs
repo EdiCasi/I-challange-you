@@ -38,12 +38,8 @@ namespace I_challenge_you_3._0
 
         public void loadPosts()
         {
-            List<Post> posts = new List<Post>();
-            posts.AddRange(PostDAL.getPosts(loggedUser.IdUser));
-            foreach(User friend in UserDAL.getUserFriends(loggedUser.IdUser))
-            {
-                posts.AddRange(PostDAL.getPosts(friend.IdUser));
-            }
+            List<Post> posts = PostDAL.getPosts(loggedUser.IdUser);
+
             foreach (var post in posts )
             {
                 DisplayPost displayPost = new DisplayPost(post);
