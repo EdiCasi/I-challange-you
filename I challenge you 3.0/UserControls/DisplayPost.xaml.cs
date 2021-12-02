@@ -42,7 +42,7 @@ namespace I_challenge_you_3._0.UserControls
             {
                 System.Drawing.Image img = ByteImageConverter.ConvertByteArrayToImage(this.post.Content);
                 postImage.Source = ConvertImage(img);
-                postImage.Visibility = Visibility.Visible;
+                postImage.Visibility = contentContainer.Visibility = Visibility.Visible;
             }
             else if(post.ContentType == "video")
             {
@@ -52,7 +52,7 @@ namespace I_challenge_you_3._0.UserControls
                     File.WriteAllBytes(filePath, post.Content);
                 }
                 postVideo.Source = new Uri(filePath, UriKind.Relative);
-                postVideo.Visibility = Visibility.Visible;
+                postVideo.Visibility = contentContainer.Visibility = Visibility.Visible;
             }
         }
 

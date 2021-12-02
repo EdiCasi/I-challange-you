@@ -38,7 +38,12 @@ namespace I_challenge_you_3._0
 
         public void loadPosts()
         {
-            List<Post> posts = PostDAL.getPosts(loggedUser.IdUser);
+            List<Post> posts = new List<Post>();
+            posts.AddRange(PostDAL.getPosts(loggedUser.IdUser));
+            foreach(User friend in UserDAL.getUserFriends(loggedUser.IdUser))
+            {
+                posts.AddRange(PostDAL.getPosts(friend.IdUser));
+            }
             foreach (var post in posts )
             {
                 DisplayPost displayPost = new DisplayPost(post);
@@ -46,8 +51,6 @@ namespace I_challenge_you_3._0
                 postPanel.Children.Add(displayPost);
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {

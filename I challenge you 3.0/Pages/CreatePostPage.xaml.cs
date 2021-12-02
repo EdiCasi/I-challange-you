@@ -36,8 +36,6 @@ namespace I_challenge_you_3._0.Pages
             DataContext = this;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new HomePage(loggedUser));

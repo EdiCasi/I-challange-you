@@ -65,9 +65,11 @@
                     Visibility="Visible"/>
 
                 <Border
+                    x:Name="contentContainer"
                     BorderBrush="Black"
                     BorderThickness="0 0 0 1"
-                    Padding="10">
+                    Padding="10" 
+                    Visibility="Collapsed">
                     <Grid>
                         <Image 
                             x:Name="postImage" 
