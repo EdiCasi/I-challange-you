@@ -51,7 +51,7 @@ namespace I_challenge_you_3._0.Pages
             return true;
         }
 
-        private void CreatePost()
+        private void CreatePost(User challengedUser)
         {
             Post newPost = new Post();
             newPost.IdUser = loggedUser.IdUser;
@@ -60,7 +60,15 @@ namespace I_challenge_you_3._0.Pages
             newPost.Description = descriptionTextbox.Text;
             newPost.Content = new byte[64];
             newPost.Reactions = 1;
-            newPost.PostType = "Default";
+
+            if(challengedUser != null)
+            {
+                newPost.ChallengedPerson = challengedUser.IdUser;
+            }
+            else
+            {
+                newPost.ChallengedPerson = null;
+            }
 
             PostDAL.addPost(newPost);
         }
@@ -74,7 +82,7 @@ namespace I_challenge_you_3._0.Pages
             }
             try
             {
-                CreatePost();
+                CreatePost(null);
             }
             catch(Exception exception)
             {
