@@ -1,8 +1,10 @@
-﻿using I_challenge_you_3._0.DataAccessLayers;
+﻿using I_challenge_you_3._0.Converters;
+using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,8 @@ namespace I_challenge_you_3._0.Pages
     /// </summary>
     public partial class CreateChallengePage : Page
     {
+        private byte[] PostContent = null;
+        private string ContentType = null;
         public User loggedUser { get; set; }
         public User challengedUser { get; set; }
         public CreateChallengePage(User user)
@@ -35,7 +39,7 @@ namespace I_challenge_you_3._0.Pages
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage());
         }
 
 
@@ -46,7 +50,8 @@ namespace I_challenge_you_3._0.Pages
             newPost.CreationDate = DateTime.UtcNow;
             newPost.Title = titleTextbox.Text;
             newPost.Description = descriptionTextbox.Text;
-            newPost.Content = new byte[64];
+            newPost.Content = PostContent;
+            newPost.ContentType = ContentType;
             newPost.Reactions = 1;
 
             if (challengedUser != null)
@@ -97,7 +102,7 @@ namespace I_challenge_you_3._0.Pages
                 return;
             }
             MessageBox.Show("Post created successfully!");
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage());
         }
 
         private void UploadContent_Click(object sender, RoutedEventArgs e)
@@ -107,6 +112,22 @@ namespace I_challenge_you_3._0.Pages
             if (fileDialog.ShowDialog() == true)
             {
                 contentPath.Content = fileDialog.FileName;
+                if (System.IO.Path.GetExtension(fileDialog.FileName) == ".mp4")
+                {
+
+                    PostContent = File.ReadAllBytes(fileDialog.FileName);
+                    ContentType = "video";
+                }
+                else
+                {
+                    PostContent = ByteImageConverter.ConvertImageToBytes(System.Drawing.Image.FromFile(fileDialog.FileName));
+                    ContentType = "image";
+                }
+            }
+            else
+            {
+                PostContent = null;
+                ContentType = null;
             }
         }
 

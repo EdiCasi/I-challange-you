@@ -22,10 +22,10 @@ namespace I_challenge_you_3._0.Pages
     public partial class PostOrChallengePage : Page
     {
         public User loggedUser { get; set; }
-        public PostOrChallengePage(User user)
+        public PostOrChallengePage()
         {
             InitializeComponent();
-            loggedUser = user;
+            loggedUser = MainWindow.LoggedUser;
             DataContext = this;
         }
 
@@ -40,7 +40,7 @@ namespace I_challenge_you_3._0.Pages
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage());
         }
     }
 }
