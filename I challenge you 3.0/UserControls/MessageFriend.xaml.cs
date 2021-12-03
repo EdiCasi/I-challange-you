@@ -18,12 +18,13 @@ namespace I_challenge_you_3._0.UserControls
 {
     public partial class MessageFriend : UserControl
     {
+        public User friend { get; set; }
         public MessageFriend(User friend)
         {
             InitializeComponent();
 
-            userName.Text = friend.Username;
-            userImage.ImageSource = friend.Image;
+            DataContext = this;
+            this.friend = friend;
         }
     }
 }

@@ -5,28 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:I_challenge_you_3._0.UserControls"
              mc:Ignorable="d"
-             Background="Coral" Height="80" Width="500">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width= "*"/>
-            <ColumnDefinition Width="120"/>
-        </Grid.ColumnDefinitions>
+             Height="80" Width="500">
+    <Border 
+        Background="Coral"
+        CornerRadius="15">
+        <Grid Height="80">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width= "*"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
 
-        <Border 
+            <Border 
             CornerRadius="50"
             Grid.Column="0"
             Height="60"
             Width="60"
+            BorderBrush="Black"
+            BorderThickness="1"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Margin="0 0 0 0">
-            <Border.Background>
-                <ImageBrush Stretch="Fill" ImageSource="{Binding searchedUser.Image}"/>
-            </Border.Background>
-        </Border>
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="{Binding searchedUser.Image}"/>
+                </Border.Background>
+            </Border>
 
-        <Label 
+            <Label 
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" 
@@ -36,7 +41,7 @@
             Content="{Binding searchedUser.Username}"
             />
 
-        <Button 
+            <Button 
             Grid.Column="2"
             x:Name="AddFriendButton"
             Content="Add Friend" 
@@ -47,14 +52,14 @@
             Width="100"
             Click="AddFriendClick"
             >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter 
                         Property="CornerRadius"
                         Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
-       
-    </Grid>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Border>
 </UserControl>

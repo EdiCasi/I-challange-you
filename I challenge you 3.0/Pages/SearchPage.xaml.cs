@@ -40,7 +40,9 @@ namespace I_challenge_you_3._0.Pages
 
                     if (foundUser.Username != MainWindow.LoggedUser.Username && friends.Find(friend => friend.IdUser == foundUser.IdUser) == null)
                     {
-                        searchedPanel.Children.Add(new SearchedUser(foundUser));
+                        SearchedUser searchedUser = new SearchedUser(foundUser);
+                        searchedUser.Padding = new Thickness(10);
+                        searchedPanel.Children.Add(searchedUser);
                     }
                 }
             }

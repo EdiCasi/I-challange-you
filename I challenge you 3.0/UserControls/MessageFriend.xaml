@@ -20,11 +20,15 @@
                 Grid.Column="0"
                 Height="60"
                 Width="60"
+                BorderBrush="Black"
+                BorderThickness="1"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Margin="0 0 0 0">
                 <Border.Background>
-                    <ImageBrush Stretch="Fill" x:Name="userImage"/>
+                    <ImageBrush 
+                        Stretch="Fill"
+                        ImageSource="{Binding friend.Image}"/>
                 </Border.Background>
             </Border>
 
@@ -34,8 +38,7 @@
                 HorizontalAlignment="Center"
                 >
                 <TextBlock 
-                    x:Name="userName" 
-                    Text="Long username that will definitely not fit"
+                    Text="{Binding friend.Username}"
                     TextTrimming="CharacterEllipsis"
                     FontSize="18"
                     FontWeight="Bold"/>
