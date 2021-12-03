@@ -27,12 +27,14 @@
                             Grid.Column="0"
                             Height="50"
                             Width="50"
-                            Background="Beige"
                             BorderBrush="Black"
                             BorderThickness="1"
-                            CornerRadius="25">
-                            <Image
-                                x:Name="userImage"/>
+                            CornerRadius="50">
+                            <Border.Background>
+                                <ImageBrush 
+                                    Stretch="Fill"
+                                    ImageSource="{Binding postUser.Image}"/>
+                            </Border.Background>
                         </Border>
 
                         <Label

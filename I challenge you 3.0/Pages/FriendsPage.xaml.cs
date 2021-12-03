@@ -29,6 +29,7 @@ namespace I_challenge_you_3._0.Pages
             foreach(User user in friends)
             {
                 Friend friend = new Friend(user, this);
+                friend.Padding = new Thickness(10);
                 friendsPanel.Children.Add(friend);
             }
         }

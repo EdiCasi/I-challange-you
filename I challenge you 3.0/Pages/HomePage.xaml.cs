@@ -31,10 +31,10 @@ namespace I_challenge_you_3._0
             InitializeComponent();
             DataContext = this;
             userImage.ImageSource = MainWindow.LoggedUser.Image;
-            loadPosts();
+            LoadPosts();
         }
 
-        public void loadPosts()
+        public void LoadPosts()
         {
             List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);
 
@@ -64,6 +64,10 @@ namespace I_challenge_you_3._0
         private void Friends_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new FriendsPage());
+        }
+        private void Messages_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MessagesPage());
         }
     }
 }

@@ -86,7 +86,15 @@
             FontSize="18"
             FontWeight="Bold"
             Click="Back_Click"
-        ></Button>
+        >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Page>
