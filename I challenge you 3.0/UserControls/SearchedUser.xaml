@@ -18,15 +18,15 @@
             </Grid.ColumnDefinitions>
 
             <Border 
-            CornerRadius="50"
-            Grid.Column="0"
-            Height="60"
-            Width="60"
-            BorderBrush="Black"
-            BorderThickness="1"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Margin="0 0 0 0">
+                CornerRadius="50"
+                Grid.Column="0"
+                Height="60"
+                Width="60"
+                BorderBrush="Black"
+                BorderThickness="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0 0 0 0">
                 <Border.Background>
                     <ImageBrush Stretch="Fill" ImageSource="{Binding searchedUser.Image}"/>
                 </Border.Background>
