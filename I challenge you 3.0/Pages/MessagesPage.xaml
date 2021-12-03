@@ -18,7 +18,7 @@
         <Border 
             Grid.Column="0"
             BorderBrush="Black"
-            BorderThickness="2 0 0 0">
+            BorderThickness="0 0 2 0">
             <Rectangle Fill="Coral"/>
         </Border>
 
@@ -51,5 +51,82 @@
                 </Style>
             </Button.Resources>
         </Button>
+
+        <Grid 
+            x:Name="messagesGrid"
+            Visibility="Collapsed"
+            Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="85"/>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                BorderBrush="Black"
+                BorderThickness="0 0 0 2">
+                <Label
+                    x:Name="messageUsername"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Height="35"
+                    VerticalContentAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"/>
+            </Border>
+
+            <ScrollViewer 
+                x:Name="messagesScroll"
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Hidden">
+                <StackPanel
+                    x:Name="messagePanel"
+                    Margin="0 0 0 40"
+                ></StackPanel>
+            </ScrollViewer>
+
+            <Border
+                Grid.Row="2"
+                BorderBrush="Black"
+                BorderThickness="0 2 0 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBox 
+                        Grid.Column="0"
+                        x:Name="messageText"
+                        FontSize="18"
+                        Height="35"
+                        Margin="10 0 10 0"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"/>
+
+                    <Button
+                        Grid.Column="1"
+                        Height="35"
+                        Width="100"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Margin="0 0 0 25"
+                        Content="Send"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Click="Send_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter 
+                                    Property="CornerRadius"
+                                    Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </Border>
+    </Grid>
     </Grid>
 </Page>

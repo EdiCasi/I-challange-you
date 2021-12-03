@@ -39,6 +39,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +60,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteImageConverter.cs" />
+    <Compile Include="DataAccessLayers\MessageDAL.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Pages\MessagesPage.xaml.cs">
       <DependentUpon>MessagesPage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +83,9 @@
     </Compile>
     <Compile Include="UserControls\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MessageControl.xaml.cs">
+      <DependentUpon>MessageControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MessageFriend.xaml.cs">
       <DependentUpon>MessageFriend.xaml</DependentUpon>
@@ -155,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Friend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MessageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

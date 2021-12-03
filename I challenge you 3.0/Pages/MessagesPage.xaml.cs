@@ -20,9 +20,12 @@ namespace I_challenge_you_3._0.Pages
 {
     public partial class MessagesPage : Page
     {
+        public User MessagesFriend { get; set; }
         public MessagesPage()
         {
             InitializeComponent();
+            DataContext = this;
+
             LoadFriends();
         }
 
@@ -32,15 +35,52 @@ namespace I_challenge_you_3._0.Pages
 
             foreach (var friend in friends)
             {
-                MessageFriend messageFriend = new MessageFriend(friend);
+                MessageFriend messageFriend = new MessageFriend(friend, this);
                 messageFriend.Padding = new Thickness(10);
                 friendPanel.Children.Add(messageFriend);
             }
         }
 
+        public static void LoadMessages(User friend, MessagesPage page)
+        {
+            page.MessagesFriend = friend;
+            page.messageUsername.Content = friend.Username;
+            page.messagePanel.Children.Clear();
+            List<Message> Messages = MessageDAL.getMessages(MainWindow.LoggedUser, page.MessagesFriend);
+
+            foreach (var message in Messages)
+            {
+                MessageControl messageControl = new MessageControl(message);
+                messageControl.HorizontalAlignment = message.Sender.IdUser == MainWindow.LoggedUser.IdUser ? HorizontalAlignment.Right : HorizontalAlignment.Left;
+                messageControl.Padding = new Thickness(10);
+                page.messagePanel.Children.Add(messageControl);
+            }
+
+            page.messagesGrid.Visibility = Visibility.Visible;
+            page.messagesScroll.ScrollToEnd();
+        }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new HomePage());
+        }
+
+        private void Send_Click(object sender, RoutedEventArgs e)
+        {
+            if(!String.IsNullOrWhiteSpace(messageText.Text))
+            {
+                Message message = new Message()
+                {
+                    Sender = MainWindow.LoggedUser,
+                    Receiver = MessagesFriend,
+                    Text = messageText.Text,
+                    CreationDate = DateTime.UtcNow
+                };
+                MessageDAL.createMessage(message);
+
+                LoadMessages(MessagesFriend, this);
+                messageText.Text = "";
+            }
         }
     }
 }

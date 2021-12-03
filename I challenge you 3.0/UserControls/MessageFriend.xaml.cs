@@ -1,30 +1,26 @@
 ﻿using I_challenge_you_3._0.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using I_challenge_you_3._0.Pages;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace I_challenge_you_3._0.UserControls
 {
     public partial class MessageFriend : UserControl
     {
-        public User friend { get; set; }
-        public MessageFriend(User friend)
+        public User Friend { get; set; }
+        public MessagesPage Page { get; set; }
+        public MessageFriend(User friend, MessagesPage page)
         {
             InitializeComponent();
 
             DataContext = this;
-            this.friend = friend;
+            this.Friend = friend;
+            this.Page = page;
+        }
+
+        private void MessageFriend_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessagesPage.LoadMessages(Friend, Page);
         }
     }
 }

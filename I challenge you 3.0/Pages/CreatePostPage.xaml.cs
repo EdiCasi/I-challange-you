@@ -53,15 +53,17 @@ namespace I_challenge_you_3._0.Pages
 
         private void CreatePost()
         {
-            Post newPost = new Post();
-            newPost.IdUser = MainWindow.LoggedUser.IdUser;
-            newPost.CreationDate = DateTime.UtcNow;
-            newPost.Title = titleTextbox.Text;
-            newPost.Description = descriptionTextbox.Text;
-            newPost.Content = PostContent;
-            newPost.ContentType = ContentType;
-            newPost.Reactions = 1;
-            newPost.PostType = "Default";
+            Post newPost = new Post()
+            {
+                IdUser = MainWindow.LoggedUser.IdUser,
+                CreationDate = DateTime.UtcNow,
+                Title = titleTextbox.Text,
+                Description = descriptionTextbox.Text,
+                Content = PostContent,
+                ContentType = ContentType,
+                Reactions = 1,
+                PostType = "Default"
+            };
 
             PostDAL.addPost(newPost);
         }
