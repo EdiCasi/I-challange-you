@@ -20,24 +20,22 @@ namespace I_challenge_you_3._0.Pages
 {
     public partial class FriendsPage : Page
     {
-        public User loggedUser { get; set; }
         public List<User> friends { get; set; }
-        public FriendsPage(User loggedUser)
+        public FriendsPage()
         {
             InitializeComponent();
-            this.loggedUser = loggedUser;
-            this.friends = UserDAL.getUserFriends(loggedUser.IdUser);
+            this.friends = UserDAL.getUserFriends(MainWindow.LoggedUser.IdUser);
 
             foreach(User user in friends)
             {
-                Friend friend = new Friend(user, loggedUser,this);
+                Friend friend = new Friend(user, this);
                 friendsPanel.Children.Add(friend);
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage());
         }
     }
 }

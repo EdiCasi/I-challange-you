@@ -1,4 +1,5 @@
-﻿using I_challenge_you_3._0.DataAccessLayer;
+﻿using I_challenge_you_3._0.Converters;
+using I_challenge_you_3._0.DataAccessLayer;
 using I_challenge_you_3._0.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace I_challenge_you_3._0.DataAccessLayers
 {
@@ -28,12 +31,16 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    ImageSource src = DBNull.Value.Equals(reader["userImage"]) ? 
+                        new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Default Image.png", UriKind.Absolute)) : 
+                        ByteImageConverter.ConvertByteArrayToImageSource((byte[])reader["userImage"]);
                     return new User()
                     {
                         IdUser = (int)reader["userId"],
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
-                        //Status = reader["status"].ToString()
+                        Status = reader["statusName"].ToString(),
+                        Image = src
                     };
                 }
                 reader.Close();
@@ -56,12 +63,16 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    ImageSource src = DBNull.Value.Equals(reader["userImage"]) ?
+                        new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Default Image.png", UriKind.Absolute)) :
+                        ByteImageConverter.ConvertByteArrayToImageSource((byte[])reader["userImage"]);
                     return new User()
                     {
                         IdUser = (int)reader["userId"],
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
-                        //Status = reader["status"].ToString()
+                        Status = reader["statusName"].ToString(),
+                        Image = src
                     };
                 }
                 reader.Close();
