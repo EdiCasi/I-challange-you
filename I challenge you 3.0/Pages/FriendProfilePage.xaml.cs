@@ -18,21 +18,17 @@ namespace I_challenge_you_3._0.Pages
 {
     public partial class FriendProfilePage : Page
     {
-        public User loggedUser { get; set; }
-
         public User friend { get; set; }
-        public FriendProfilePage(User loggedUser, User friend)
+        public FriendProfilePage(User friend)
         {
             InitializeComponent();
             DataContext = this;
-
-            this.loggedUser = loggedUser;
             this.friend = friend;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FriendsPage(loggedUser));
+            NavigationService.Navigate(new FriendsPage());
         }
     }
 }

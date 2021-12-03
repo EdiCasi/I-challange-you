@@ -21,16 +21,9 @@ namespace I_challenge_you_3._0.Pages
 {
     public partial class SearchPage : Page
     {
-        public User loggedUser { get; set; }
         public SearchPage()
         {
             InitializeComponent();
-        }
-
-        public SearchPage(User user)
-        {
-            InitializeComponent();
-            loggedUser = user;
             DataContext = this;
         }
 
@@ -43,9 +36,9 @@ namespace I_challenge_you_3._0.Pages
             {
                 foreach(User foundUser in foundUsers)
                 {
-                    if (foundUser.Username != loggedUser.Username)
+                    if (foundUser.Username != MainWindow.LoggedUser.Username)
                     {
-                        searchedPanel.Children.Add(new SearchedUser(foundUser, loggedUser));
+                        searchedPanel.Children.Add(new SearchedUser(foundUser));
                     }
                 }
             }
@@ -53,7 +46,7 @@ namespace I_challenge_you_3._0.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage());
         }
     }
 }
