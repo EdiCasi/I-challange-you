@@ -24,12 +24,19 @@ namespace I_challenge_you_3._0.UserControls
     {
         public Post post { get; set; }
         public User postUser { get; set; }
+        public User challengedPerson { get; set; }
         public DisplayPost(Post post)
         {
             InitializeComponent();
             DataContext = this;
             this.post = post;
             this.postUser = UserDAL.getUserById(post.IdUser);
+
+            if(post.ChallengedPerson != null)
+            {
+                challengeFor.Visibility = Visibility.Visible;
+                this.challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
+            }
         }
     }
 }

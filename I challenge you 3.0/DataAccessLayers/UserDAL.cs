@@ -197,6 +197,41 @@ namespace I_challenge_you_3._0.DataAccessLayers
             }
         }
 
+        public static List<User> getCertainFriends(String searchedName,int loogedUserId)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getCertainFriends", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter username = new SqlParameter("@friendName", searchedName);
+                SqlParameter userId = new SqlParameter("@loggedUserId", loogedUserId);
+                cmd.Parameters.Add(userId);
+                cmd.Parameters.Add(username);
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<User> foundUsers = new List<User>();
+                while (reader.Read())
+                {
+                    User foudUser = new User()
+                    {
+                        IdUser = (int)reader["friend2Id"],
+                        Email = reader["email"].ToString(),
+                        Username = reader["username"].ToString(),
+                        Status = reader["statusId"].ToString()
+                    };
+
+                    foundUsers.Add(foudUser);
+                }
+
+                reader.Close();
+                return foundUsers;
+            }
+        }
+
         public static List<User> getUserFriends(int userId)
         {
             using (SqlConnection con = DALHelper.Connection)

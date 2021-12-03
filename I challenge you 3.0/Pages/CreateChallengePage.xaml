@@ -99,10 +99,10 @@
 
 
         <Button 
-            Content="Search"
             Grid.Column="1" 
             Grid.Row="1" 
-            Click="Back_Click" 
+            Click="Search_Click" 
+            Content="Search"
             FontSize="18"
             Width="130"
             Height="35"

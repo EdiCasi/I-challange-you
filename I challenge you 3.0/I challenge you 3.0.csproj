@@ -58,7 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="DataAccessLayers\FriendshipDAL.cs" />
     <Compile Include="Pages\FriendProfilePage.xaml.cs">
       <DependentUpon>FriendProfilePage.xaml</DependentUpon>
@@ -66,8 +66,14 @@
     <Compile Include="Pages\FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SearchFriendPage.xaml.cs">
+      <DependentUpon>SearchFriendPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChallengedUser.xaml.cs">
+      <DependentUpon>ChallengedUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DisplayPost.xaml.cs">
       <DependentUpon>DisplayPost.xaml</DependentUpon>
@@ -91,6 +97,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CreateChallengePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PostOrChallengePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +133,12 @@
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CreateChallengePage.xaml.cs">
+      <DependentUpon>CreateChallengePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PostOrChallengePage.xaml.cs">
+      <DependentUpon>PostOrChallengePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -134,7 +154,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SearchFriendPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ChallengedUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

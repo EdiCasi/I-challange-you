@@ -61,24 +61,30 @@ namespace I_challenge_you_3._0.Pages
             PostDAL.addPost(newPost);
         }
 
-        private bool ValidateInput()
+        private string ValidateInput()
         {
-            if (
-                String.IsNullOrWhiteSpace(titleTextbox.Text) ||
-                (String.IsNullOrWhiteSpace(descriptionTextbox.Text) && String.IsNullOrWhiteSpace(contentPath.Content.ToString()))
-                || challengedUser == null
-            )
+            if(String.IsNullOrWhiteSpace(titleTextbox.Text))
             {
-                return false;
+                return "Title is mandatory";
             }
-            return true;
+            if (challengedUser == null)
+            {
+                return "Challange valid person from your friend list";
+            }
+            if (String.IsNullOrWhiteSpace(descriptionTextbox.Text)
+                && String.IsNullOrWhiteSpace(contentPath.Content.ToString()))
+            {
+                return "You should add or some media or at least a description";
+            }
+            return "";
         }
 
         private void Challenge_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidateInput())
+            string validationMessage = ValidateInput();
+            if (validationMessage != "")
             {
-                MessageBox.Show("Make sure the Title, Challenged User and either a Media File or Description is specified.");
+                MessageBox.Show(validationMessage);
                 return;
             }
             try
@@ -102,6 +108,11 @@ namespace I_challenge_you_3._0.Pages
             {
                 contentPath.Content = fileDialog.FileName;
             }
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SearchFriendPage(loggedUser, personTextbox.Text, this));
         }
     }
 }
