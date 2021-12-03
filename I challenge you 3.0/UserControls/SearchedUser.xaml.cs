@@ -19,18 +19,20 @@ namespace I_challenge_you_3._0.UserControls
 {
     public partial class SearchedUser : UserControl
     {
+        public User loggedUser { get; set; }
         public User searchedUser { get; set; }
-        public SearchedUser(User searchedUser)
+        public SearchedUser(User searchedUser, User loggedUser)
         {
             InitializeComponent();
             DataContext = this;
 
+            this.loggedUser = loggedUser;
             this.searchedUser = searchedUser;
         }
 
         private void AddFriendClick(object sender, RoutedEventArgs e)
         {
-            FriendshipDAL.createFriendship(MainWindow.LoggedUser, searchedUser);
+            FriendshipDAL.createFriendship(loggedUser, searchedUser);
             AddFriendButton.Visibility = Visibility.Hidden;
 
             MessageBox.Show("The user has been added to your friends list");

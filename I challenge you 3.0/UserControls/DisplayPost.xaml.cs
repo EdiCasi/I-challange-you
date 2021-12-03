@@ -40,7 +40,8 @@ namespace I_challenge_you_3._0.UserControls
         {
             if(post.ContentType == "image")
             {
-                postImage.Source = ByteImageConverter.ConvertByteArrayToImageSource(this.post.Content);
+                System.Drawing.Image img = ByteImageConverter.ConvertByteArrayToImage(this.post.Content);
+                postImage.Source = ConvertImage(img);
                 postImage.Visibility = contentContainer.Visibility = Visibility.Visible;
             }
             else if(post.ContentType == "video")
@@ -53,6 +54,26 @@ namespace I_challenge_you_3._0.UserControls
                 postVideo.Source = new Uri(filePath, UriKind.Relative);
                 postVideo.Visibility = contentContainer.Visibility = Visibility.Visible;
             }
+        }
+
+        public static ImageSource ConvertImage(System.Drawing.Image image)
+        {
+            try
+            {
+                if (image != null)
+                {
+                    var bitmap = new System.Windows.Media.Imaging.BitmapImage();
+                    bitmap.BeginInit();
+                    System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                    memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+                    bitmap.StreamSource = memoryStream;
+                    bitmap.EndInit();
+                    return bitmap;
+                }
+            }
+            catch { }
+            return null;
         }
 
         private void MediaPlayToggle(object sender, MouseButtonEventArgs e)

@@ -19,23 +19,25 @@ namespace I_challenge_you_3._0.UserControls
 {
     public partial class Friend : UserControl
     {
+        public  User loggedUser { get; set; }
         public  User displayedFriend { get; set; }
         public FriendsPage page { get; set; }
 
 
-        public Friend(User displayedFriend, FriendsPage page)
+        public Friend(User displayedFriend, User loggedUser, FriendsPage page)
         {
             InitializeComponent();
 
             DataContext = this;
 
+            this.loggedUser = loggedUser;
             this.displayedFriend = displayedFriend;
             this.page = page;
         }
 
         private void GoToProfile(object sender, RoutedEventArgs e)
         {
-            page.NavigationService.Navigate(new FriendProfilePage(displayedFriend));
+            page.NavigationService.Navigate(new FriendProfilePage(loggedUser, displayedFriend));
         }
     }
 }

@@ -26,17 +26,19 @@ namespace I_challenge_you_3._0
     /// </summary>
     public partial class HomePage : Page
     {
-        public HomePage()
+        public User loggedUser { get; set; }
+
+        public HomePage(User user)
         {
             InitializeComponent();
             DataContext = this;
-            userImage.ImageSource = MainWindow.LoggedUser.Image;
+            this.loggedUser = user;
             loadPosts();
         }
 
         public void loadPosts()
         {
-            List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);
+            List<Post> posts = PostDAL.getPosts(loggedUser.IdUser);
 
             foreach (var post in posts )
             {
@@ -48,22 +50,23 @@ namespace I_challenge_you_3._0
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProfilePage());
+            NavigationService.Navigate(new ProfilePage(loggedUser));
         }
 
         private void NewPost_Click(object sender, RoutedEventArgs e)
         {
+            //NavigationService.Navigate(new CreatePostPage(loggedUser));
             NavigationService.Navigate(new PostOrChallengePage(loggedUser));
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SearchPage());
+            NavigationService.Navigate(new SearchPage(loggedUser));
         }
         
         private void Friends_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FriendsPage());
+            NavigationService.Navigate(new FriendsPage(loggedUser));
         }
     }
 }

@@ -28,15 +28,17 @@ namespace I_challenge_you_3._0.Pages
     {
         private byte[] PostContent = null;
         private string ContentType = null;
-        public CreatePostPage()
+        public User loggedUser { get; set; }
+        public CreatePostPage(User user)
         {
             InitializeComponent();
+            loggedUser = user;
             DataContext = this;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage());
+            NavigationService.Navigate(new HomePage(loggedUser));
         }
 
         private bool ValidateInput()
@@ -54,7 +56,7 @@ namespace I_challenge_you_3._0.Pages
         private void CreatePost(User challengedUser)
         {
             Post newPost = new Post();
-            newPost.IdUser = MainWindow.LoggedUser.IdUser;
+            newPost.IdUser = loggedUser.IdUser;
             newPost.CreationDate = DateTime.UtcNow;
             newPost.Title = titleTextbox.Text;
             newPost.Description = descriptionTextbox.Text;
@@ -91,7 +93,7 @@ namespace I_challenge_you_3._0.Pages
                 return;
             }
             MessageBox.Show("Post created successfully!");
-            NavigationService.Navigate(new HomePage());
+            NavigationService.Navigate(new HomePage(loggedUser));
         }
 
         private void UploadContent_Click(object sender, RoutedEventArgs e)
