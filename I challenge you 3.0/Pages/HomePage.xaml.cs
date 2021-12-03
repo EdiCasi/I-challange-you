@@ -53,7 +53,7 @@ namespace I_challenge_you_3._0
 
         private void NewPost_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreatePostPage());
+            NavigationService.Navigate(new PostOrChallengePage());
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)

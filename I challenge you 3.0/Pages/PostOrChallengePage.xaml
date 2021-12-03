@@ -1,0 +1,95 @@
+﻿<Page x:Class="I_challenge_you_3._0.Pages.PostOrChallengePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PostOrChallengePage"
+      Background="AntiqueWhite"
+      Width="1000"
+      Height="600"
+      >
+
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <Label 
+            Grid.Column="1"
+            Grid.Row="0"
+            Content="What do you want to post?"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="28"
+            FontWeight="Bold"
+            />
+        <Button 
+            Content="Post"
+            Grid.Column="1" 
+            Grid.Row="1" 
+            Margin="70,60,70,230" 
+            Click="Post_Click"
+            FontSize="18" 
+            FontWeight="Bold"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        
+        <Button 
+            Content="Challenge"
+            Grid.Column="1" 
+            Grid.Row="1" 
+            Margin="70,200,70,90" 
+            FontSize="18" 
+            FontWeight="Bold"
+            Click="Challenge_Click"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button 
+            Content="Back"
+            Grid.Column="1" 
+            Grid.Row="2" 
+            Margin="150,0,150,80"
+            Click="Back_Click" 
+            FontSize="18"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        
+        
+    </Grid>
+</Page>

@@ -27,7 +27,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    allPosts.Add(new Post()
+                    Post newPost = new Post()
                     {
                         IdPost = (int)reader["postId"],
                         IdUser = (int)reader["userId"],
@@ -36,9 +36,20 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         Content = (byte[])reader["contentPost"],
                         ContentType = reader["contentType"].ToString(),
                         Description = reader["description"].ToString(),
-                        Reactions = (int)reader["reactions"],
-                        PostType = reader["postType"].ToString()
-                    });
+                        Reactions = (int)reader["reactions"]
+                    };
+
+                    if (reader["challengedPerson"] != DBNull.Value)
+                    {
+                        newPost.ChallengedPerson = (int)reader["challengedPerson"];
+                    }
+                    else
+                    {
+                        newPost.ChallengedPerson = null;
+                    }
+
+
+                    allPosts.Add(newPost);
                 }
                 reader.Close();
             }
@@ -58,7 +69,15 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 cmd.Parameters.Add("@contentType", SqlDbType.VarChar).Value = post.ContentType;
                 cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = post.Description;
                 cmd.Parameters.Add("@reactions", SqlDbType.Int).Value = post.Reactions;
-                cmd.Parameters.Add("@postType", SqlDbType.VarChar).Value = post.PostType;
+                
+                if(post.ChallengedPerson != null)
+                {
+                    cmd.Parameters.Add("@challengedPerson", SqlDbType.VarChar).Value = post.ChallengedPerson;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@challengedPerson", SqlDbType.VarChar).Value = DBNull.Value;
+                }
 
                 con.Open();
                 cmd.ExecuteNonQuery();

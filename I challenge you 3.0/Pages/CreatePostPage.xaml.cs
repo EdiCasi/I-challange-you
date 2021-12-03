@@ -28,10 +28,13 @@ namespace I_challenge_you_3._0.Pages
     {
         private byte[] PostContent = null;
         private string ContentType = null;
-        public CreatePostPage()
+
+        public User loggedUser { get; set; }
+        public CreatePostPage(User user)
         {
             InitializeComponent();
             DataContext = this;
+            this.loggedUser = user;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -51,20 +54,25 @@ namespace I_challenge_you_3._0.Pages
             return true;
         }
 
-        private void CreatePost()
+        private void CreatePost(User challengedUser)
         {
-            Post newPost = new Post()
-            {
-                IdUser = MainWindow.LoggedUser.IdUser,
-                CreationDate = DateTime.UtcNow,
-                Title = titleTextbox.Text,
-                Description = descriptionTextbox.Text,
-                Content = PostContent,
-                ContentType = ContentType,
-                Reactions = 1,
-                PostType = "Default"
-            };
+            Post newPost = new Post();
+            newPost.IdUser = loggedUser.IdUser;
+            newPost.CreationDate = DateTime.UtcNow;
+            newPost.Title = titleTextbox.Text;
+            newPost.Description = descriptionTextbox.Text;
+            newPost.Content = PostContent;
+            newPost.ContentType = ContentType;
+            newPost.Reactions = 1;
 
+            if(challengedUser != null)
+            {
+                newPost.ChallengedPerson = challengedUser.IdUser;
+            }
+            else
+            {
+                newPost.ChallengedPerson = null;
+            }
             PostDAL.addPost(newPost);
         }
 
@@ -77,7 +85,7 @@ namespace I_challenge_you_3._0.Pages
             }
             try
             {
-                CreatePost();
+                CreatePost(null);
             }
             catch(Exception exception)
             {
