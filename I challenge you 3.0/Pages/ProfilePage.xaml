@@ -11,9 +11,25 @@
       Title="ProfilePage"
       Background="LightSalmon">
         <Grid>
-        
-            <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,69,0,0" Click="EditUsername_Click"/>
-            <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,125,0,0" Click="EditEmail_Click"/>
+
+            <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,69,0,0" Click="EditUsername_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter 
+                            Property="CornerRadius"
+                            Value="10"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,125,0,0" Click="EditEmail_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter 
+                                    Property="CornerRadius"
+                                    Value="10"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,69,0,0"/>
             <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,117,0,0"/>
             <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,162,0,0"/>
@@ -26,7 +42,15 @@
             <TextBox Height="23" Name="NewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="395,247,485,330"/>
             <Label Content="Retype New Password"  HorizontalAlignment="Left" Margin="241,296,0,0" VerticalAlignment="Top"/>
             <TextBox Height="23" Name="ReNewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="395,296,485,281" RenderTransformOrigin="0.831,-2.934"/>
-            <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="395,350,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click"/>
+            <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="395,350,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter 
+                            Property="CornerRadius"
+                            Value="10"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
         <Button
             Height="35"
@@ -38,7 +62,15 @@
             FontSize="18"
             FontWeight="Bold"
             Click="Back_Click"
-        ></Button>
+        >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
             
     </Grid>
 </Page>

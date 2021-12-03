@@ -23,44 +23,43 @@ namespace I_challenge_you_3._0.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
-        public User LoggedUser { get; set; }
-
-        public ProfilePage(User user)
+        public ProfilePage()
         {
-            StatusDAL.getStatuses();
+            if(StatusMap.Statuses.Count == 0) 
+            {
+                StatusDAL.getStatuses();
+            }
             InitializeComponent();
-            this.LoggedUser = user;
             Statuses.ItemsSource = StatusMap.Statuses;
-            Statuses.SelectedIndex = StatusMap.getStatusId(LoggedUser.Status) - 1;
-            Username.Text = LoggedUser.Username;
-            Email.Text = LoggedUser.Email;
+            Statuses.SelectedIndex = StatusMap.getStatusId(MainWindow.LoggedUser.Status) - 1;
+            Username.Text = MainWindow.LoggedUser.Username;
+            Email.Text = MainWindow.LoggedUser.Email;
             DataContext = this;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserDAL.changeStatus(LoggedUser.IdUser, Statuses.SelectedIndex + 1);
+            UserDAL.changeStatus(MainWindow.LoggedUser.IdUser, Statuses.SelectedIndex + 1);
+            MainWindow.LoggedUser = UserDAL.getUserById(MainWindow.LoggedUser.IdUser);
         }
 
         private void EditUsername_Click(object sender, RoutedEventArgs e)
         {
-            UserDAL.changeUsername(LoggedUser.IdUser, Username.Text);
+            UserDAL.changeUsername(MainWindow.LoggedUser.IdUser, Username.Text);
         }
 
         private void EditEmail_Click(object sender, RoutedEventArgs e)
         {
-            UserDAL.changeEmail(LoggedUser.IdUser, Email.Text);
+            UserDAL.changeEmail(MainWindow.LoggedUser.IdUser, Email.Text);
         }
 
         private void ChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            if (OldPass.Text == LoggedUser.Pass)
+            if (OldPass.Text == MainWindow.LoggedUser.Pass)
             {
                 if (NewPass.Text == ReNewPass.Text)
                 {
-                    UserDAL.changePassword(LoggedUser.IdUser, NewPass.Text);
+                    UserDAL.changePassword(MainWindow.LoggedUser.IdUser, NewPass.Text);
                 }
                 else
                 {
@@ -74,7 +73,7 @@ namespace I_challenge_you_3._0.Pages
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(LoggedUser));
+            NavigationService.Navigate(new HomePage());
         }
     }
 }

@@ -26,19 +26,18 @@ namespace I_challenge_you_3._0
     /// </summary>
     public partial class HomePage : Page
     {
-        public User loggedUser { get; set; }
-
-        public HomePage(User user)
+        public HomePage()
         {
             InitializeComponent();
             DataContext = this;
-            this.loggedUser = user;
-            loadPosts();
+            userImage.ImageSource = MainWindow.LoggedUser.Image;
+            LoadPosts();
         }
 
-        public void loadPosts()
+        public void LoadPosts()
         {
-            List<Post> posts = PostDAL.getPosts(loggedUser.IdUser);
+            List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);
+
             foreach (var post in posts )
             {
                 DisplayPost displayPost = new DisplayPost(post);
@@ -47,27 +46,28 @@ namespace I_challenge_you_3._0
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProfilePage(loggedUser));
+            NavigationService.Navigate(new ProfilePage());
         }
 
         private void NewPost_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new CreatePostPage(loggedUser));
             NavigationService.Navigate(new PostOrChallengePage(loggedUser));
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SearchPage(loggedUser));
+            NavigationService.Navigate(new SearchPage());
         }
         
         private void Friends_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FriendsPage(loggedUser));
+            NavigationService.Navigate(new FriendsPage());
+        }
+        private void Messages_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MessagesPage());
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using I_challenge_you_3._0.Models;
-using I_challenge_you_3._0.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,25 +16,15 @@ using System.Windows.Shapes;
 
 namespace I_challenge_you_3._0.UserControls
 {
-    public partial class Friend : UserControl
+    public partial class MessageControl : UserControl
     {
-        public  User displayedFriend { get; set; }
-        public FriendsPage page { get; set; }
-
-
-        public Friend(User displayedFriend, FriendsPage page)
+        public Message Message { get; set; }
+        public MessageControl(Message message)
         {
             InitializeComponent();
-
             DataContext = this;
 
-            this.displayedFriend = displayedFriend;
-            this.page = page;
-        }
-
-        private void GoToProfile(object sender, RoutedEventArgs e)
-        {
-            page.NavigationService.Navigate(new FriendProfilePage(displayedFriend));
+            this.Message = message;
         }
     }
 }

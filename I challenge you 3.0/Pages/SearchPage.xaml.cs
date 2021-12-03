@@ -21,16 +21,9 @@ namespace I_challenge_you_3._0.Pages
 {
     public partial class SearchPage : Page
     {
-        public User loggedUser { get; set; }
         public SearchPage()
         {
             InitializeComponent();
-        }
-
-        public SearchPage(User user)
-        {
-            InitializeComponent();
-            loggedUser = user;
             DataContext = this;
         }
 
@@ -39,13 +32,17 @@ namespace I_challenge_you_3._0.Pages
             searchedPanel.Children.Clear();
 
             List<User> foundUsers = UserDAL.searchUsers(searchBox.Text);
+            List<User> friends = UserDAL.getUserFriends(MainWindow.LoggedUser.IdUser);
             if(foundUsers.Count != 0 )
             {
                 foreach(User foundUser in foundUsers)
                 {
-                    if (foundUser.Username != loggedUser.Username)
+
+                    if (foundUser.Username != MainWindow.LoggedUser.Username && friends.Find(friend => friend.IdUser == foundUser.IdUser) == null)
                     {
-                        searchedPanel.Children.Add(new SearchedUser(foundUser, loggedUser));
+                        SearchedUser searchedUser = new SearchedUser(foundUser);
+                        searchedUser.Padding = new Thickness(10);
+                        searchedPanel.Children.Add(searchedUser);
                     }
                 }
             }
@@ -53,7 +50,7 @@ namespace I_challenge_you_3._0.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage(loggedUser));
+            NavigationService.Navigate(new HomePage());
         }
     }
 }
