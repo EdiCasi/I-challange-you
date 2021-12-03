@@ -3,7 +3,6 @@ using I_challenge_you_3._0.Models;
 using I_challenge_you_3._0.UserControls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,30 +18,23 @@ using System.Windows.Shapes;
 
 namespace I_challenge_you_3._0.Pages
 {
-    public partial class SearchPage : Page
+    public partial class MessagesPage : Page
     {
-        public SearchPage()
+        public MessagesPage()
         {
             InitializeComponent();
-            DataContext = this;
+            LoadFriends();
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        public void LoadFriends()
         {
-            searchedPanel.Children.Clear();
-
-            List<User> foundUsers = UserDAL.searchUsers(searchBox.Text);
             List<User> friends = UserDAL.getUserFriends(MainWindow.LoggedUser.IdUser);
-            if(foundUsers.Count != 0 )
-            {
-                foreach(User foundUser in foundUsers)
-                {
 
-                    if (foundUser.Username != MainWindow.LoggedUser.Username && friends.Find(friend => friend.IdUser == foundUser.IdUser) == null)
-                    {
-                        searchedPanel.Children.Add(new SearchedUser(foundUser));
-                    }
-                }
+            foreach (var friend in friends)
+            {
+                MessageFriend messageFriend = new MessageFriend(friend);
+                messageFriend.Padding = new Thickness(10);
+                friendPanel.Children.Add(messageFriend);
             }
         }
 

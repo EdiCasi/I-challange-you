@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CreatePostPage">
+      Title="CreatePostPage"
+      Background="LightSalmon">
 
     <Grid>
         <Label

@@ -58,6 +58,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteImageConverter.cs" />
+    <Compile Include="Pages\MessagesPage.xaml.cs">
+      <DependentUpon>MessagesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,9 @@
     </Compile>
     <Compile Include="UserControls\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MessageFriend.xaml.cs">
+      <DependentUpon>MessageFriend.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchedUser.xaml.cs">
       <DependentUpon>SearchedUser.xaml</DependentUpon>
@@ -128,6 +134,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\MessagesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Friend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MessageFriend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Default Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Messages Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

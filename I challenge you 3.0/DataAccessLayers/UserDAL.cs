@@ -193,11 +193,16 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 List<User> foundUsers = new List<User>();
                 while (reader.Read())
                 {
+                    ImageSource src = DBNull.Value.Equals(reader["userImage"]) ?
+                        new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Default Image.png", UriKind.Absolute)) :
+                        ByteImageConverter.ConvertByteArrayToImageSource((byte[])reader["userImage"]);
                     User foudUser = new User()
                     {
                         IdUser = (int)reader["userId"],
                         Email = reader["email"].ToString(),
-                        Username = reader["username"].ToString()
+                        Username = reader["username"].ToString(),
+                        Status = reader["statusName"].ToString(),
+                        Image = src
                     };
 
                     foundUsers.Add(foudUser);
@@ -226,12 +231,16 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 while (reader.Read())
                 {
                     int friendId = (int)reader["friend1Id"] == userId ? (int)reader["friend2Id"] : (int)reader["friend1Id"];
+                    ImageSource src = DBNull.Value.Equals(reader["userImage"]) ?
+                        new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Default Image.png", UriKind.Absolute)) :
+                        ByteImageConverter.ConvertByteArrayToImageSource((byte[])reader["userImage"]);
                     User foudUser = new User()
                     {
                         IdUser = friendId,
                         Email = reader["email"].ToString(),
                         Username = reader["username"].ToString(),
-                        Status = reader["statusId"].ToString()
+                        Status = reader["statusName"].ToString(),
+                        Image = src
                     };
 
                     foundUsers.Add(foudUser);
