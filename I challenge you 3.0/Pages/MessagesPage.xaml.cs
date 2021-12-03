@@ -46,6 +46,7 @@ namespace I_challenge_you_3._0.Pages
             page.MessagesFriend = friend;
             page.messageUsername.Content = friend.Username;
             page.messagePanel.Children.Clear();
+            page.messageText.Text = "";
             List<Message> Messages = MessageDAL.getMessages(MainWindow.LoggedUser, page.MessagesFriend);
 
             foreach (var message in Messages)

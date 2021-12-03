@@ -10,7 +10,7 @@
         Background="LightGray"
         CornerRadius="15">
         <Grid>
-            <Label Margin="20">
+            <Label Margin="10">
                 <TextBlock
                     Text="{Binding Message.Text}"
                     FontSize="18"
