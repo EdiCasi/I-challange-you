@@ -1,29 +1,32 @@
 ﻿using I_challenge_you_3._0.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace I_challenge_you_3._0.Pages
 {
     public partial class FriendProfilePage : Page
     {
         public User friend { get; set; }
+        public Brush statusColor { get; set; }
         public FriendProfilePage(User friend)
         {
             InitializeComponent();
             DataContext = this;
             this.friend = friend;
+            switch(this.friend.Status)
+            {
+                case "Available":
+                    this.statusColor = new SolidColorBrush(Colors.Green);
+                    break;
+                case "Away":
+                    this.statusColor = new SolidColorBrush(Colors.Yellow);
+                    break;
+                default:
+                    this.statusColor = new SolidColorBrush(Colors.Red);
+                    break;
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

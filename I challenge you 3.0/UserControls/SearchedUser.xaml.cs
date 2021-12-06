@@ -33,7 +33,7 @@ namespace I_challenge_you_3._0.UserControls
             FriendshipDAL.createFriendship(MainWindow.LoggedUser, searchedUser);
             AddFriendButton.Visibility = Visibility.Hidden;
 
-            MessageBox.Show("The user has been added to your friends list");
+            MessageBox.Show("A friend request has been sent to the user");
         }
     }
 }

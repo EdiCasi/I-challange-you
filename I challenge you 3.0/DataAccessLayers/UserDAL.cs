@@ -285,5 +285,59 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 return foundUsers;
             }
         }
+
+        public static void changeUserImage(int userId, byte[] imageBytes)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("changeProfilePicture", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter image = new SqlParameter("@image", imageBytes);
+                SqlParameter id = new SqlParameter("@userId", userId);
+
+                cmd.Parameters.Add(image);
+                cmd.Parameters.Add(id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static List<User> getUserPendingFriends(int userId)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getPendingFriends", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter userIdParameter = new SqlParameter("@userId", userId);
+                cmd.Parameters.Add(userIdParameter);
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<User> foundUsers = new List<User>();
+                while (reader.Read())
+                {
+                    int friendId = (int)reader["friend1Id"] == userId ? (int)reader["friend2Id"] : (int)reader["friend1Id"];
+                    ImageSource src = DBNull.Value.Equals(reader["userImage"]) ?
+                        new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Default Image.png", UriKind.Absolute)) :
+                        ByteImageConverter.ConvertByteArrayToImageSource((byte[])reader["userImage"]);
+                    User foudUser = new User()
+                    {
+                        IdUser = friendId,
+                        Email = reader["email"].ToString(),
+                        Username = reader["username"].ToString(),
+                        Status = reader["statusName"].ToString(),
+                        Image = src,
+                    };
+
+                    foundUsers.Add(foudUser);
+                }
+
+                reader.Close();
+                return foundUsers;
+            }
+        }
     }
 }

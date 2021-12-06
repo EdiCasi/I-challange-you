@@ -73,7 +73,7 @@
             Width="180"
             FontSize="14"
             Content="{Binding friend.Status}"
-            Background="White"
+            Background="{Binding statusColor}"
             />
 
         <Button
