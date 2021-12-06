@@ -1,5 +1,7 @@
-﻿using I_challenge_you_3._0.DataAccessLayers;
+﻿using I_challenge_you_3._0.Converters;
+using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +37,7 @@ namespace I_challenge_you_3._0.Pages
             Username.Text = MainWindow.LoggedUser.Username;
             Email.Text = MainWindow.LoggedUser.Email;
             DataContext = this;
+            userImage.ImageSource = MainWindow.LoggedUser.Image;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,6 +77,24 @@ namespace I_challenge_you_3._0.Pages
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new HomePage());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] image;
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Image files (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg;";
+            if (fileDialog.ShowDialog() == true)
+            {
+                MainWindow.LoggedUser.Image = new BitmapImage(new Uri(fileDialog.FileName));
+                userImage.ImageSource = MainWindow.LoggedUser.Image;
+                image = ByteImageConverter.ConvertImageToBytes(System.Drawing.Image.FromFile(fileDialog.FileName));
+                UserDAL.changeUserImage(MainWindow.LoggedUser.IdUser, image);
+            }
+            else
+            {
+                image = null;
+            }
         }
     }
 }

@@ -1,36 +1,46 @@
 ﻿using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
 using I_challenge_you_3._0.UserControls;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace I_challenge_you_3._0.Pages
 {
     public partial class FriendsPage : Page
     {
         public List<User> friends { get; set; }
+        public List<User> friendsP { get; set; }
         public FriendsPage()
         {
             InitializeComponent();
             this.friends = UserDAL.getUserFriends(MainWindow.LoggedUser.IdUser);
+            this.friendsP = UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser);
 
             foreach(User user in friends)
             {
                 Friend friend = new Friend(user, this);
                 friend.Padding = new Thickness(10);
                 friendsPanel.Children.Add(friend);
+            }
+            foreach(User user in friendsP)
+            {
+                FriendPending friend = new FriendPending(user, this);
+                friend.Padding = new Thickness(10);
+                friendsPPanel.Children.Add(friend);
+            }
+            if(friendsP.Count==0)
+            {
+                Thickness margin = friendsPanel.Margin;
+                margin.Top = 56;
+                friendsPanel.Margin = margin;
+            }
+            if(friends.Count==0)
+            {
+                Thickness margin = friendsPPanel.Margin;
+                margin.Bottom = 98.6;
+                friendsPPanel.Margin = margin;
             }
         }
 
