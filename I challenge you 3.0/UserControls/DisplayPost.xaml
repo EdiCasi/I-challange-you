@@ -133,6 +133,7 @@
                         Click="Like_Click"
                         FontSize="18" 
                         FontWeight="Bold"
+                        Foreground="Orange"
                         />
                         <Label
                         x:Name="likeLabel"
@@ -149,6 +150,7 @@
                         Click="Love_Click"
                         FontSize="18" 
                         FontWeight="Bold"
+                        Foreground="Red"
                         />
                         <Label
                         x:Name="loveLabel"
@@ -165,6 +167,7 @@
                         Click="Angry_Click"
                         FontSize="18" 
                         FontWeight="Bold"
+                        Foreground="Firebrick"
                         />
                         <Label
                         x:Name="angryLabel"
@@ -181,6 +184,7 @@
                         Click="Laugh_Click"
                         FontSize="18" 
                         FontWeight="Bold"
+                        Foreground="LightSeaGreen"
                         />
                         <Label
                         x:Name="laughLabel"
