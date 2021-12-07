@@ -28,12 +28,18 @@ namespace I_challenge_you_3._0.UserControls
         public Post post { get; set; }
         public User postUser { get; set; }
         public User challengedPerson { get; set; }
+        public User loggedUser { get; set; }
         public DisplayPost(Post post)
         {
             InitializeComponent();
+            loggedUser = MainWindow.LoggedUser;
             DataContext = this;
             this.post = post;
             this.postUser = UserDAL.getUserById(post.IdUser);
+            likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+            loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+            angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+            laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
 
             if(post.ChallengedPerson != null)
             {
@@ -87,6 +93,76 @@ namespace I_challenge_you_3._0.UserControls
         {
             postVideo.Stop();
             playingVideo = false;
+        }
+
+        private void Like_Click(object sender, RoutedEventArgs e)
+        {
+            if(ReactionDAL.verifyUserReaction(loggedUser.IdUser, post.IdPost) == 0)
+            {
+                ReactionDAL.addReaction(loggedUser.IdUser, post.IdPost, "like");
+                likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+            }
+            else
+            {
+                ReactionDAL.modifyUserReaction(loggedUser.IdUser, post.IdPost, "like");
+                likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+                loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+                angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+                laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
+            }
+        }
+
+        private void Love_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReactionDAL.verifyUserReaction(loggedUser.IdUser, post.IdPost) == 0)
+            {
+                ReactionDAL.addReaction(loggedUser.IdUser, post.IdPost, "love");
+                loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+            }
+            else
+            {
+                ReactionDAL.modifyUserReaction(loggedUser.IdUser, post.IdPost, "love");
+                loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+                likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+                angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+                laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
+            }
+        }
+
+        private void Angry_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReactionDAL.verifyUserReaction(loggedUser.IdUser, post.IdPost) == 0)
+            {
+                ReactionDAL.addReaction(loggedUser.IdUser, post.IdPost, "angry");
+                angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+            }
+            else
+            {
+                ReactionDAL.modifyUserReaction(loggedUser.IdUser, post.IdPost, "angry");
+                angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+                likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+                loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+                
+                laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
+            }
+        }
+
+        private void Laugh_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReactionDAL.verifyUserReaction(loggedUser.IdUser, post.IdPost) == 0)
+            {
+                ReactionDAL.addReaction(loggedUser.IdUser, post.IdPost, "laugh");
+                laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
+            }
+            else
+            {
+                ReactionDAL.modifyUserReaction(loggedUser.IdUser, post.IdPost, "laugh");
+                laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
+                likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+                loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+                angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+                
+            }
         }
     }
 }

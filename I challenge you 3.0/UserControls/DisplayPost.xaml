@@ -68,10 +68,10 @@
                                 Content="{Binding challengedPerson.Username}"
                                 />
                         </StackPanel>
-                        
-                        
-                        
-                        
+
+
+
+
                     </Grid>
                 </Border>
                 <Label
@@ -115,9 +115,87 @@
 
                 <Border
                     Padding="10">
-                    <Label 
-                        FontSize="14"
-                        Content="[Insert reactions here]"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="500"/>
+                        </Grid.ColumnDefinitions>
+                        <Button 
+                        Content="👍"
+                        Grid.Column="0" 
+                        Click="Like_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="Orange"
+                        />
+                        <Label
+                        x:Name="likeLabel"
+                        BorderBrush="Black"
+                        Grid.Column="1"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+                        
+                        <Button 
+                        Content="❤"
+                        Grid.Column="2" 
+                        Click="Love_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="Red"
+                        />
+                        <Label
+                        x:Name="loveLabel"
+                        BorderBrush="Black"
+                        Grid.Column="3"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+                        
+                        <Button 
+                        Content="😠" 
+                        Grid.Column="4" 
+                        Click="Angry_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="Firebrick"
+                        />
+                        <Label
+                        x:Name="angryLabel"
+                        BorderBrush="Black"
+                        Grid.Column="5"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+                        
+                        <Button 
+                        Content="😂"
+                        Grid.Column="6"
+                        Click="Laugh_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="LightSeaGreen"
+                        />
+                        <Label
+                        x:Name="laughLabel"
+                        BorderBrush="Black"
+                        Grid.Column="7"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+
+                    </Grid>
                 </Border>
             </StackPanel>
         </Border>

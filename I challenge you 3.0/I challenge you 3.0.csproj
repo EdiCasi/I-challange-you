@@ -61,7 +61,9 @@
     </ApplicationDefinition>
     <Compile Include="Converters\ByteImageConverter.cs" />
     <Compile Include="DataAccessLayers\MessageDAL.cs" />
+    <Compile Include="DataAccessLayers\ReactionDAL.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Reaction.cs" />
     <Compile Include="Pages\MessagesPage.xaml.cs">
       <DependentUpon>MessagesPage.xaml</DependentUpon>
     </Compile>
