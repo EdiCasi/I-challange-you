@@ -38,18 +38,24 @@ namespace I_challenge_you_3._0.Pages
             {
                 
                 DisplayPost displayPost = new DisplayPost(post);
-                displayPost.postImage.Visibility = Visibility.Hidden;
+
+                displayPost.contentContainer.Visibility = Visibility.Collapsed;
+                displayPost.reactionsContainer.Visibility = Visibility.Collapsed;
                 displayPost.MouseDoubleClick += DisplayPost_MouseDoubleClick;
-                displayPost.Padding = new Thickness(10);
+                displayPost.Padding = new Thickness(20);
                 postPanel.Children.Add(displayPost);
             }
         }
 
         private void DisplayPost_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //(DisplayPost)sender.usernameLabel.
             var displayedPost = (DisplayPost)sender;
             displayedPost.usernameLabel.Content = "Clicked";
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

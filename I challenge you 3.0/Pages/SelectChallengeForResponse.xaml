@@ -44,7 +44,8 @@
             VerticalAlignment="Top"
             HorizontalAlignment="center"
             Height="40"
-            Width="100"
+            Width="100" 
+            Click="Back_Click"
             >
             <Button.Resources>
                 <Style TargetType="Border">
