@@ -18,29 +18,18 @@ namespace I_challenge_you_3._0.Pages
             this.friends = UserDAL.getUserFriends(MainWindow.LoggedUser.IdUser);
             this.friendsP = UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser);
 
+            foreach(User user in friendsP)
+            {
+                FriendPending friend = new FriendPending(user, this);
+                friend.Padding = new Thickness(10);
+                friendsPanel.Children.Add(friend);
+            }
+
             foreach(User user in friends)
             {
                 Friend friend = new Friend(user, this);
                 friend.Padding = new Thickness(10);
                 friendsPanel.Children.Add(friend);
-            }
-            foreach(User user in friendsP)
-            {
-                FriendPending friend = new FriendPending(user, this);
-                friend.Padding = new Thickness(10);
-                friendsPPanel.Children.Add(friend);
-            }
-            if(friendsP.Count==0)
-            {
-                Thickness margin = friendsPanel.Margin;
-                margin.Top = 56;
-                friendsPanel.Margin = margin;
-            }
-            if(friends.Count==0)
-            {
-                Thickness margin = friendsPPanel.Margin;
-                margin.Bottom = 98.6;
-                friendsPPanel.Margin = margin;
             }
         }
 
