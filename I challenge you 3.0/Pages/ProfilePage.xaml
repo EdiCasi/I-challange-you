@@ -20,20 +20,8 @@
             BorderThickness="1"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Margin="90,69,810,0">
-            <Button
-                Background="Transparent"
-                BorderBrush="Transparent" 
-                Click="Button_Click"
-                Margin="1.2,1.2,-0.8,-0.8">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter 
-                            Property="CornerRadius"
-                            Value="50"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            Margin="90,69,810,0"
+            MouseDown="Image_Click">
             <Border.Background>
                 <ImageBrush Stretch="Fill" x:Name="userImage"/>
             </Border.Background>

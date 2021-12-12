@@ -23,25 +23,38 @@ namespace I_challenge_you_3._0.UserControls
     public partial class ChallengedUser : UserControl
     {
         public User displayedFriend { get; set; }
-        public CreateChallengePage createChallengePage { get; set; }
+        public Page page { get; set; }
+        public string pageType { get; set; }
         public SearchFriendPage searchFriendPage { get; set; }
-        public ChallengedUser(User displayedFriend, CreateChallengePage createChallengePage, SearchFriendPage searchFriendPage)
+        public ChallengedUser(User displayedFriend, Page page, string pageType, SearchFriendPage searchFriendPage)
         {
             InitializeComponent();
 
             DataContext = this;
 
             this.displayedFriend = displayedFriend;
-            this.createChallengePage = createChallengePage;
+            this.page = page;
+            this.pageType = pageType;
             this.searchFriendPage = searchFriendPage;
         }
 
         private void selectFriend(object sender, RoutedEventArgs e)
         {
-            createChallengePage.personTextbox.IsEnabled = false;
-            createChallengePage.personTextbox.Text = displayedFriend.Username;
-            createChallengePage.challengedUser = displayedFriend;
-            searchFriendPage.NavigationService.Navigate(createChallengePage);
+            switch(pageType)
+            {
+                case "CreateChallengePage":
+                    var convPage = (CreateChallengePage)page;
+                    convPage.personTextbox.Text = displayedFriend.Username;
+                    convPage.challengedUser = displayedFriend;
+                    searchFriendPage.NavigationService.Navigate(convPage);
+                    break;
+                case "EditPostPage":
+                    var editPage = (EditPostPage)page;
+                    editPage.userTextbox.Text = displayedFriend.Username;
+                    editPage.ChallengedUser = displayedFriend;
+                    searchFriendPage.NavigationService.Navigate(editPage);
+                    break;
+            }
         }
     }
 }

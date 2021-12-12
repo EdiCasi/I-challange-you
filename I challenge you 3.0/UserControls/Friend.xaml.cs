@@ -1,4 +1,5 @@
-﻿using I_challenge_you_3._0.Models;
+﻿using I_challenge_you_3._0.DataAccessLayers;
+using I_challenge_you_3._0.Models;
 using I_challenge_you_3._0.Pages;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,18 @@ namespace I_challenge_you_3._0.UserControls
         private void GoToProfile(object sender, RoutedEventArgs e)
         {
             page.NavigationService.Navigate(new FriendProfilePage(displayedFriend));
+        }
+
+        private void RemoveFriend_Click(object sender, RoutedEventArgs e)
+        {
+            if(FriendshipDAL.RemoveFriendship(MainWindow.LoggedUser, this.displayedFriend))
+            {
+                ((Panel)this.Parent).Children.Remove(this);
+            }
+            else
+            {
+                MessageBox.Show("Error occured trying to remove friend.");
+            }
         }
     }
 }

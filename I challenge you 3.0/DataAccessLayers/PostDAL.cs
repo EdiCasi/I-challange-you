@@ -58,19 +58,19 @@ namespace I_challenge_you_3._0.DataAccessLayers
 
         public static void addPost(Post post)
         {
-            using(SqlConnection con = DALHelper.Connection)
+            using (SqlConnection con = DALHelper.Connection)
             {
-                SqlCommand cmd = new SqlCommand("createPost",con);
+                SqlCommand cmd = new SqlCommand("createPost", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@userId", SqlDbType.Int).Value = post.IdUser;
-                cmd.Parameters.Add("@creationDate", SqlDbType.Date).Value = post.CreationDate;
+                cmd.Parameters.Add("@creationDate", SqlDbType.DateTime).Value = post.CreationDate;
                 cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = post.Title;
                 cmd.Parameters.Add("@contentPost", SqlDbType.VarBinary).Value = post.Content;
                 cmd.Parameters.Add("@contentType", SqlDbType.VarChar).Value = post.ContentType;
                 cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = post.Description;
                 cmd.Parameters.Add("@reactions", SqlDbType.Int).Value = post.Reactions;
-                
-                if(post.ChallengedPerson != null)
+
+                if (post.ChallengedPerson != null)
                 {
                     cmd.Parameters.Add("@challengedPerson", SqlDbType.VarChar).Value = post.ChallengedPerson;
                 }
@@ -82,6 +82,62 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
+            }
+        }
+
+        public static bool RemovePost(Post post)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("removePost", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@postId", SqlDbType.Int).Value = post.IdPost;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return true;
+                }
+                catch(Exception)
+                {
+                    con.Close();
+                    return false;
+                }
+            }
+        }
+
+        public static bool ChangePost(Post post)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("changePost", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@postId", SqlDbType.Int).Value = post.IdPost;
+                    cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = post.Title;
+                    cmd.Parameters.Add("@contentPost", SqlDbType.VarBinary).Value = post.Content;
+                    cmd.Parameters.Add("@contentType", SqlDbType.VarChar).Value = post.ContentType;
+                    cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = post.Description;
+                    if(post.ChallengedPerson != null)
+                    {
+                        cmd.Parameters.Add("@challengedPerson", SqlDbType.Int).Value = post.ChallengedPerson;
+                    }
+                    else
+                    {
+                        cmd.Parameters.Add("@challengedPerson", SqlDbType.Int).Value = DBNull.Value;
+                    }
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    con.Close();
+                    return false;
+                }
             }
         }
     }
