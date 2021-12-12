@@ -266,5 +266,8 @@
   <ItemGroup>
     <Resource Include="Resources\Images\XIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\EditIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
