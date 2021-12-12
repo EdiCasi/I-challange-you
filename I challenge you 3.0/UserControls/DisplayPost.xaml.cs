@@ -1,6 +1,7 @@
 ﻿using I_challenge_you_3._0.Converters;
 using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
+using I_challenge_you_3._0.Pages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,13 +30,15 @@ namespace I_challenge_you_3._0.UserControls
         public User postUser { get; set; }
         public User challengedPerson { get; set; }
         public User loggedUser { get; set; }
-        public DisplayPost(Post post)
+        private HomePage page { get; set; }
+        public DisplayPost(Post post, HomePage page)
         {
             InitializeComponent();
             loggedUser = MainWindow.LoggedUser;
             DataContext = this;
             this.post = post;
             this.postUser = UserDAL.getUserById(post.IdUser);
+            this.page = page;
 
             LoadContent();
         }
@@ -63,6 +66,12 @@ namespace I_challenge_you_3._0.UserControls
                 descriptionLabel.Visibility = Visibility.Visible;
             }
 
+            if(postUser.IdUser == MainWindow.LoggedUser.IdUser)
+            {
+                removePost.Visibility = Visibility.Visible;
+                editPost.Visibility = Visibility.Visible;
+            }
+
             likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
             loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
             angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
@@ -71,6 +80,7 @@ namespace I_challenge_you_3._0.UserControls
             if (post.ChallengedPerson != null)
             {
                 challengeFor.Visibility = Visibility.Visible;
+                challengedPersonName.Visibility = Visibility.Visible;
                 this.challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
             }
         }
@@ -171,9 +181,21 @@ namespace I_challenge_you_3._0.UserControls
             }
         }
 
+        private void RemovePost_Click(object sender, RoutedEventArgs e)
+        {
+            if(PostDAL.RemovePost(post))
+            {
+                ((Panel)this.Parent).Children.Remove(this);
+            }
+            else
+            {
+                MessageBox.Show("Error occured trying to remove post.");
+            }
+        }
+
         private void EditPost_Click(object sender, RoutedEventArgs e)
         {
-
+            page.NavigationService.Navigate(new EditPostPage(post));
         }
     }
 }
