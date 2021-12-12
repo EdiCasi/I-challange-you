@@ -25,6 +25,31 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 con.Close();
             }
         }
+
+        public static bool RemoveFriendship(User user1, User user2)
+        {
+            using(SqlConnection con = DALHelper.Connection)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("removeFriendship", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@user1Id", SqlDbType.Int).Value = user1.IdUser;
+                    cmd.Parameters.Add("@user2Id", SqlDbType.Int).Value = user2.IdUser;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    return true;
+                }
+                catch(Exception)
+                {
+                    con.Close();
+                    return false;
+                }
+            }
+        }
+
         public static void acceptRequest(int userId, int friendId)
         {
             using (SqlConnection con = DALHelper.Connection)

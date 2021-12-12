@@ -67,6 +67,9 @@
     <Compile Include="Pages\CreateResponse.xaml.cs">
       <DependentUpon>CreateResponse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditPostPage.xaml.cs">
+      <DependentUpon>EditPostPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MessagesPage.xaml.cs">
       <DependentUpon>MessagesPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CreateResponse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditPostPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -283,6 +290,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Logout Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\XIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\EditIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

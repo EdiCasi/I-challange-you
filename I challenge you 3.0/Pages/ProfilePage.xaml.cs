@@ -79,7 +79,7 @@ namespace I_challenge_you_3._0.Pages
             NavigationService.Navigate(new HomePage());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Image_Click(object sender, RoutedEventArgs e)
         {
             byte[] image;
             OpenFileDialog fileDialog = new OpenFileDialog();

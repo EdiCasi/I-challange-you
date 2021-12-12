@@ -40,7 +40,7 @@ namespace I_challenge_you_3._0
 
             foreach (var post in posts )
             {
-                DisplayPost displayPost = new DisplayPost(post);
+                DisplayPost displayPost = new DisplayPost(post, this);
                 displayPost.Padding = new Thickness(10);
                 postPanel.Children.Add(displayPost);
             }
