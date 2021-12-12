@@ -50,6 +50,7 @@ namespace I_challenge_you_3._0.UserControls
             LoadContent();
         }
 
+
         private void LoadContent()
         {
             if(post.ContentType == "image")
