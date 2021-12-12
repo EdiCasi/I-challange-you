@@ -69,5 +69,11 @@ namespace I_challenge_you_3._0
         {
             NavigationService.Navigate(new MessagesPage());
         }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.LoggedUser = null;
+            NavigationService.Navigate(new LoginPage());
+        }
     }
 }

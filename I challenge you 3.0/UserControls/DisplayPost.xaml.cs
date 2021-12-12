@@ -36,16 +36,6 @@ namespace I_challenge_you_3._0.UserControls
             DataContext = this;
             this.post = post;
             this.postUser = UserDAL.getUserById(post.IdUser);
-            likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
-            loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
-            angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
-            laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
-
-            if(post.ChallengedPerson != null)
-            {
-                challengeFor.Visibility = Visibility.Visible;
-                this.challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
-            }
 
             LoadContent();
         }
@@ -67,6 +57,22 @@ namespace I_challenge_you_3._0.UserControls
                 }
                 postVideo.Source = new Uri(filePath, UriKind.Relative);
                 postVideo.Visibility = contentContainer.Visibility = Visibility.Visible;
+            }
+
+            if(!String.IsNullOrWhiteSpace(post.Description))
+            {
+                descriptionLabel.Visibility = Visibility.Visible;
+            }
+
+            likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
+            loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
+            angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
+            laughLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "laugh");
+
+            if (post.ChallengedPerson != null)
+            {
+                challengeFor.Visibility = Visibility.Visible;
+                this.challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
             }
         }
 

@@ -91,7 +91,7 @@
                     Padding="10"
                     FontSize="18"
                     Content="{Binding post.Description}"
-                    Visibility="Visible"/>
+                    Visibility="Collapsed"/>
 
                 <Border
                     x:Name="contentContainer"
