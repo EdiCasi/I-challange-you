@@ -32,12 +32,12 @@ namespace I_challenge_you_3._0.Pages
 
         public void LoadPosts()
         {
-            List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);
+            List<Post> posts = PostDAL.getChallenges(MainWindow.LoggedUser.IdUser);
 
             foreach (var post in posts)
             {
                 
-                DisplayPost displayPost = new DisplayPost(post);
+                DisplayPost displayPost = new DisplayPost(post , new HomePage());
 
                 displayPost.contentContainer.Visibility = Visibility.Collapsed;
                 displayPost.reactionsContainer.Visibility = Visibility.Collapsed;
@@ -51,11 +51,18 @@ namespace I_challenge_you_3._0.Pages
         {
             var displayedPost = (DisplayPost)sender;
             displayedPost.usernameLabel.Content = "Clicked";
+            CreatePostPage createPostPage = new CreatePostPage(MainWindow.LoggedUser);
+
+            createPostPage.titleTextbox.Text = "Response to: " + (string)displayedPost.titleLabel.Content;
+            createPostPage.titleTextbox.IsEnabled = false;
+            createPostPage.responseToId = displayedPost.post.IdPost;
+
+            NavigationService.Navigate(createPostPage);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new PostOrChallengePage());
         }
     }
 }
