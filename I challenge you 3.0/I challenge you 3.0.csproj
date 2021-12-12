@@ -260,5 +260,8 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Messages Icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Logout Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
