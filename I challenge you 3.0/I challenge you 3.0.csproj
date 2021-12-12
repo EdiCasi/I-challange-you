@@ -64,6 +64,9 @@
     <Compile Include="DataAccessLayers\ReactionDAL.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Reaction.cs" />
+    <Compile Include="Pages\CreateResponse.xaml.cs">
+      <DependentUpon>CreateResponse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditPostPage.xaml.cs">
       <DependentUpon>EditPostPage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,12 @@
     </Compile>
     <Compile Include="Pages\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SelectChallengeForResponse.xaml.cs">
+      <DependentUpon>SelectChallengeForResponse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Challenge.xaml.cs">
+      <DependentUpon>Challenge.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ChallengedUser.xaml.cs">
       <DependentUpon>ChallengedUser.xaml</DependentUpon>
@@ -108,6 +117,10 @@
       <DependentUpon>FriendPending.xaml</DependentUpon>
     </Compile>
     <Page Include="Pages\CreatePostPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CreateResponse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +203,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SelectChallengeForResponse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Challenge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

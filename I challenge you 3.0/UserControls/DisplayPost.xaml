@@ -159,7 +159,8 @@
                 </Border>
 
                 <Border
-                    Padding="10">
+                    Padding="10"
+                    x:Name="reactionsContainer">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30*"/>

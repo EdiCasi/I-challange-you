@@ -29,6 +29,8 @@ namespace I_challenge_you_3._0.Pages
         private byte[] PostContent = new byte[0];
         private string ContentType = "";
 
+        public Nullable<int> responseToId = null;
+
         public User loggedUser { get; set; }
         public CreatePostPage(User user)
         {
@@ -64,8 +66,8 @@ namespace I_challenge_you_3._0.Pages
             newPost.Content = PostContent;
             newPost.ContentType = ContentType;
             newPost.Reactions = 1;
-
-            if(challengedUser != null)
+            newPost.responseTo = responseToId;
+            if (challengedUser != null)
             {
                 newPost.ChallengedPerson = challengedUser.IdUser;
             }

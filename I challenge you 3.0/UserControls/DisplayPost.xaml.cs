@@ -43,14 +43,15 @@ namespace I_challenge_you_3._0.UserControls
             LoadContent();
         }
 
+
         private void LoadContent()
         {
-            if(post.ContentType == "image")
+            if(post.ContentType == "image" && this.post.Content !=null)
             {
                 postImage.Source = ByteImageConverter.ConvertByteArrayToImageSource(this.post.Content);
                 postImage.Visibility = contentContainer.Visibility = Visibility.Visible;
             }
-            else if(post.ContentType == "video")
+            else if(post.ContentType == "video" && this.post.Content != null)
             {
                 string filePath = "temp/" + string.Format(@"{0}.mp4", "video_post" + post.IdPost);
                 if (!File.Exists(filePath))
@@ -82,6 +83,12 @@ namespace I_challenge_you_3._0.UserControls
                 challengeFor.Visibility = Visibility.Visible;
                 challengedPersonName.Visibility = Visibility.Visible;
                 this.challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
+            }
+
+            if (post.responseTo != null)
+            {
+                challengeFor.Content = "Response!";
+                challengeFor.Visibility = Visibility.Visible;
             }
         }
 

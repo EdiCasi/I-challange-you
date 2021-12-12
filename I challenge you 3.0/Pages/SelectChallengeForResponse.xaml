@@ -1,0 +1,59 @@
+﻿<Page x:Class="I_challenge_you_3._0.Pages.SelectChallengeForResponse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SelectChallengeForResponse"
+      Background="AntiqueWhite"
+      Width="1000"
+      Height="600">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label 
+            Grid.Row="0"
+            Content="Choose a challenge to respond to!"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="28"
+            FontWeight="Bold"
+            />
+        
+        <ScrollViewer 
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="postPanel"
+            ></StackPanel>
+        </ScrollViewer>
+
+
+        <Button 
+            Content="Back"
+            Grid.Row="2" 
+            FontSize="18"
+            FontWeight="Bold"
+            VerticalAlignment="Top"
+            HorizontalAlignment="center"
+            Height="40"
+            Width="100" 
+            Click="Back_Click"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>

@@ -12,6 +12,49 @@ namespace I_challenge_you_3._0.DataAccessLayers
 {
     class PostDAL
     {
+        public static List<Post> getChallenges(int idUser)
+        {
+            List<Post> allPosts = new List<Post>();
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getChallenges", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter userId = new SqlParameter("@userId", idUser);
+
+                cmd.Parameters.Add(userId);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Post newPost = new Post()
+                    {
+                        IdPost = (int)reader["postId"],
+                        IdUser = (int)reader["userId"],
+                        CreationDate = DateTime.Parse(reader["creationDate"].ToString()),
+                        Title = reader["title"].ToString(),
+                        ContentType = reader["contentType"].ToString(),
+                        Description = reader["description"].ToString(),
+                        Reactions = (int)reader["reactions"]
+                    };
+
+                    if (reader["challengedPerson"] != DBNull.Value)
+                    {
+                        newPost.ChallengedPerson = (int)reader["challengedPerson"];
+                    }
+                    else
+                    {
+                        newPost.ChallengedPerson = null;
+                    }
+
+
+                    allPosts.Add(newPost);
+                }
+                reader.Close();
+            }
+            return allPosts;
+        }
+
         public static List<Post> getPosts(int idUser)
         {
             List<Post> allPosts = new List<Post>();
@@ -49,6 +92,16 @@ namespace I_challenge_you_3._0.DataAccessLayers
                     }
 
 
+                    if (reader["responseTo"] != DBNull.Value)
+                    {
+                        newPost.responseTo = (int)reader["responseTo"];
+                    }
+                    else
+                    {
+                        newPost.responseTo = null;
+                    }
+
+
                     allPosts.Add(newPost);
                 }
                 reader.Close();
@@ -77,6 +130,15 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 else
                 {
                     cmd.Parameters.Add("@challengedPerson", SqlDbType.VarChar).Value = DBNull.Value;
+                }
+
+                if (post.responseTo != null)
+                {
+                    cmd.Parameters.Add("@responseTo", SqlDbType.VarChar).Value = post.responseTo;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@responseTo", SqlDbType.VarChar).Value = DBNull.Value;
                 }
 
                 con.Open();

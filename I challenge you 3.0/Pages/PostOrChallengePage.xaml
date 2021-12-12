@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3.5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
@@ -39,7 +39,7 @@
             Content="Post"
             Grid.Column="1" 
             Grid.Row="1" 
-            Margin="70,60,70,230" 
+            Margin="70,35,70,290" 
             Click="Post_Click"
             FontSize="18" 
             FontWeight="Bold"
@@ -58,10 +58,28 @@
             Content="Challenge"
             Grid.Column="1" 
             Grid.Row="1" 
-            Margin="70,200,70,90" 
+            Margin="70,140,70,185" 
             FontSize="18" 
             FontWeight="Bold"
             Click="Challenge_Click"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button 
+            Content="Create Repsonse"
+            Grid.Column="1" 
+            Grid.Row="1" 
+            Margin="70,250,70,75" 
+            FontSize="18" 
+            FontWeight="Bold"
+            Click="Response_Click"
             >
             <Button.Resources>
                 <Style TargetType="Border">
