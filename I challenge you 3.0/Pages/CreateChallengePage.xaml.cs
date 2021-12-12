@@ -74,7 +74,7 @@ namespace I_challenge_you_3._0.Pages
             }
             if (challengedUser == null)
             {
-                return "Challange valid person from your friend list";
+                return "Challenge valid person from your friend list";
             }
             if (String.IsNullOrWhiteSpace(descriptionTextbox.Text)
                 && String.IsNullOrWhiteSpace(contentPath.Content.ToString()))
@@ -133,7 +133,7 @@ namespace I_challenge_you_3._0.Pages
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SearchFriendPage(loggedUser, personTextbox.Text, this));
+            NavigationService.Navigate(new SearchFriendPage(loggedUser, personTextbox.Text, this, "CreateChallengePage"));
         }
     }
 }

@@ -24,29 +24,40 @@ namespace I_challenge_you_3._0.Pages
     public partial class SearchFriendPage : Page
     {
         public User loggedUser { get; set; }
-        public CreateChallengePage createChallengePage { get; set; }
-        public SearchFriendPage(User loggedUser, string searchedFriend, CreateChallengePage createChallengePage)
+        public Page page { get; set; }
+        public string pageType { get; set; }
+        public SearchFriendPage(User loggedUser, string searchedFriend, Page page, string pageType)
         {
             InitializeComponent();
 
             this.loggedUser = loggedUser;
-            this.createChallengePage = createChallengePage;
+            this.page = page;
+            this.pageType = pageType;
 
             searchTextBox.Text = searchedFriend;
 
             fillTheListOfFriends(searchedFriend);
         }
+
         private void fillTheListOfFriends(string nameOfFriend)
         {
             // Made the request for searchedFriend firstly
             foreach (User user in UserDAL.getCertainFriends(nameOfFriend, loggedUser.IdUser))
             {
-                friendList.Children.Add(new ChallengedUser(user, createChallengePage, this));
+                friendList.Children.Add(new ChallengedUser(user, page, pageType, this));
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(createChallengePage);
+            switch(pageType)
+            {
+                case "CreateChallengePage":
+                    NavigationService.Navigate((CreateChallengePage)page);
+                    break;
+                case "EditPostPage":
+                    NavigationService.Navigate((EditPostPage)page);
+                    break;
+            }
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
