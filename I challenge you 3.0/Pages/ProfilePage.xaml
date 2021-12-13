@@ -11,6 +11,10 @@
       Title="ProfilePage"
       Background="LightSalmon">
     <Grid>
+        <Grid Margin="59,46,787,327" Background="AliceBlue">
+            <Label Name="username" FontWeight="Bold" FontSize="20" Content="test" HorizontalAlignment="Left" Margin="10,135,0,0" HorizontalContentAlignment ="Center"  VerticalAlignment="Top" RenderTransformOrigin="0.464,3.155" Height="39" Width="134"/>
+            <Label x:Name="email"  FontSize="20" Content="test2" HorizontalAlignment="Left" Margin="10,174,0,0" HorizontalContentAlignment ="Center"  VerticalAlignment="Top" RenderTransformOrigin="0.464,3.155" Height="39" Width="134"/>
+        </Grid>
 
         <Border 
             CornerRadius="50"
@@ -20,43 +24,48 @@
             BorderThickness="1"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Margin="90,69,810,0"
+            Margin="84,69,816,0"
             MouseDown="Image_Click">
             <Border.Background>
                 <ImageBrush Stretch="Fill" x:Name="userImage"/>
             </Border.Background>
         </Border>
-        <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,69,0,0" Click="EditUsername_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
+        
+        <Grid Margin="241,46,52,480" Background="AliceBlue">
+            <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,29,0,0"/>
+            <TextBox Name="Username" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="153,29,0,0" RenderTransformOrigin="0.401,-2.443"/>
+            <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="440,29,0,0" Click="EditUsername_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter 
                             Property="CornerRadius"
                             Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="680,125,0,0" Click="EditEmail_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Grid Margin="241,120,52,412" Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="328*"/>
+                <ColumnDefinition Width="379*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0"/>
+            <TextBox Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="154,25,0,0" Grid.ColumnSpan="2"/>
+            <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="111,25,0,0" Click="EditEmail_Click" Grid.Column="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter 
                                     Property="CornerRadius"
                                     Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,69,0,0"/>
-        <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,117,0,0"/>
-        <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,162,0,0"/>
-        <ComboBox Name="Statuses" HorizontalAlignment="Left" Margin="395,162,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <TextBox Name="Username" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="395,69,0,0" RenderTransformOrigin="0.401,-2.443"/>
-        <TextBox Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="395,120,0,0"/>
-        <Label Content="Old Password"  HorizontalAlignment="Left" Margin="241,193,0,0" VerticalAlignment="Top"/>
-        <TextBox Height="23" Name="OldPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="395,193,485,384"/>
-        <Label Content="New Password"  HorizontalAlignment="Left" Margin="241,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,1.383"/>
-        <TextBox Height="23" Name="NewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="395,247,485,330"/>
-        <Label Content="Retype New Password"  HorizontalAlignment="Left" Margin="241,296,0,0" VerticalAlignment="Top"/>
-        <TextBox Height="23" Name="ReNewPass" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="395,296,485,281" RenderTransformOrigin="0.831,-2.934"/>
-        <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="395,350,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click">
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Grid Margin="241,188,52,351" Background="AliceBlue">
+            <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <ComboBox Name="Statuses" HorizontalAlignment="Left" Margin="156,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        </Grid>
+        <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="253,276,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter 
