@@ -21,10 +21,10 @@ namespace I_challenge_you_3._0.UserControls
     public partial class Friend : UserControl
     {
         public  User displayedFriend { get; set; }
-        public FriendsPage page { get; set; }
+        public Page page { get; set; }
 
 
-        public Friend(User displayedFriend, FriendsPage page)
+        public Friend(User displayedFriend, Page page)
         {
             InitializeComponent();
 

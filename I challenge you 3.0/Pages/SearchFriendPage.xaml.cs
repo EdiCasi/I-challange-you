@@ -46,6 +46,7 @@ namespace I_challenge_you_3._0.Pages
             {
                 friendList.Children.Add(new ChallengedUser(user, page, pageType, this));
             }
+
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
