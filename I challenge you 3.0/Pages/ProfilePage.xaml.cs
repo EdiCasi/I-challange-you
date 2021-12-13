@@ -3,20 +3,10 @@ using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace I_challenge_you_3._0.Pages
 {
@@ -38,6 +28,8 @@ namespace I_challenge_you_3._0.Pages
             Email.Text = MainWindow.LoggedUser.Email;
             DataContext = this;
             userImage.ImageSource = MainWindow.LoggedUser.Image;
+            username.Content = MainWindow.LoggedUser.Username;
+            email.Content = MainWindow.LoggedUser.Email;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -58,22 +50,10 @@ namespace I_challenge_you_3._0.Pages
 
         private void ChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            if (OldPass.Text == MainWindow.LoggedUser.Pass)
-            {
-                if (NewPass.Text == ReNewPass.Text)
-                {
-                    UserDAL.changePassword(MainWindow.LoggedUser.IdUser, NewPass.Text);
-                }
-                else
-                {
-                    MessageBox.Show("The new password was not typed again properly");
-                }
-            }
-            else
-            {
-                MessageBox.Show("The old password you entered is wrong");
-            }
+            ChangePasswordWindow ch = new ChangePasswordWindow();
+            ch.Show();
         }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new HomePage());
