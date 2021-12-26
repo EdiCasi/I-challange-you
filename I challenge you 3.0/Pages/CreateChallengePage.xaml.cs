@@ -25,8 +25,8 @@ namespace I_challenge_you_3._0.Pages
     /// </summary>
     public partial class CreateChallengePage : Page
     {
-        private byte[] PostContent = null;
-        private string ContentType = null;
+        private byte[] PostContent = new byte[0];
+        private string ContentType = "";
         public User loggedUser { get; set; }
         public User challengedUser { get; set; }
         public CreateChallengePage(User user)
@@ -126,8 +126,8 @@ namespace I_challenge_you_3._0.Pages
             }
             else
             {
-                PostContent = null;
-                ContentType = null;
+                PostContent = new byte[0];
+                ContentType = "";
             }
         }
 
