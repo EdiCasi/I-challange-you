@@ -40,7 +40,7 @@ namespace I_challenge_you_3._0.Pages
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage());
+            NavigationService.Navigate(MainWindow.HomePage);
         }
 
         private void Response_Click(object sender, RoutedEventArgs e)

@@ -9,11 +9,10 @@
       Width="1000"
       Height="600"
       Title="ProfilePage"
-      Background="LightSalmon">
+      Background="Turquoise">
     <Grid>
         <Grid Margin="59,46,787,327" Background="AliceBlue">
             <Label Name="username" FontWeight="Bold" FontSize="20" Content="test" HorizontalAlignment="Left" Margin="10,135,0,0" HorizontalContentAlignment ="Center"  VerticalAlignment="Top" RenderTransformOrigin="0.464,3.155" Height="39" Width="134"/>
-            <Label x:Name="email"  FontSize="20" Content="test2" HorizontalAlignment="Left" Margin="10,174,0,0" HorizontalContentAlignment ="Center"  VerticalAlignment="Top" RenderTransformOrigin="0.464,3.155" Height="39" Width="134"/>
         </Grid>
 
         <Border 

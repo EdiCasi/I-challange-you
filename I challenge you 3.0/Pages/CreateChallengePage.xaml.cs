@@ -39,7 +39,7 @@ namespace I_challenge_you_3._0.Pages
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new HomePage());
+            NavigationService.Navigate(MainWindow.HomePage);
         }
 
 
@@ -102,7 +102,8 @@ namespace I_challenge_you_3._0.Pages
                 return;
             }
             MessageBox.Show("Post created successfully!");
-            NavigationService.Navigate(new HomePage());
+            MainWindow.HomePage = new HomePage();
+            NavigationService.Navigate(MainWindow.HomePage);
         }
 
         private void UploadContent_Click(object sender, RoutedEventArgs e)

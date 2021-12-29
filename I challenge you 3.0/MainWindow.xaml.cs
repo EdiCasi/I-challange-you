@@ -10,6 +10,7 @@ namespace I_challenge_you_3._0
     public partial class MainWindow : Window
     {
         public static User LoggedUser { get; set; }
+        public static HomePage HomePage { get; set; }
         public MainWindow()
         {
             InitializeComponent();
