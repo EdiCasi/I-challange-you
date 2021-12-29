@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:I_challenge_you_3._0.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="White" Height="89.573" Width="500">
+             Background="Aquamarine" Height="89.573" Width="500">
     <Grid>
         <Label 
             HorizontalAlignment="Left"

@@ -9,7 +9,7 @@
       Width="1000"
       Height="600"
       Title="RegisterPage"
-      Background="LightSalmon">
+      Background="Turquoise">
 
     <Grid>
         <Grid.RowDefinitions>
