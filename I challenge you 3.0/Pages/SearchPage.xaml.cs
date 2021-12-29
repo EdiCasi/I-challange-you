@@ -23,13 +23,14 @@ namespace I_challenge_you_3._0.Pages
             List<User> foundUsers = UserDAL.searchUsers(searchBox.Text);
             List<User> friends = UserDAL.getUserFriends(MainWindow.LoggedUser.IdUser);
             List<User> pendingFriends = UserDAL.getUserOutboundRequests(MainWindow.LoggedUser.IdUser);
+            List<User> friendRequests = UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser);
 
             if(foundUsers.Count != 0 )
             {
                 foreach(User foundUser in foundUsers)
                 {
 
-                    if (foundUser.Username != MainWindow.LoggedUser.Username && friends.Find(friend => friend.IdUser == foundUser.IdUser) == null && pendingFriends.Find(friend => friend.IdUser == foundUser.IdUser) == null)
+                    if (foundUser.Username != MainWindow.LoggedUser.Username && friends.Find(friend => friend.IdUser == foundUser.IdUser) == null && pendingFriends.Find(friend => friend.IdUser == foundUser.IdUser) == null && friendRequests.Find(friend => friend.IdUser == foundUser.IdUser) == null)
                     {
                         SearchedUser searchedUser = new SearchedUser(foundUser);
                         searchedUser.Padding = new Thickness(10);
