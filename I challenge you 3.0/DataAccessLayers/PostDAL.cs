@@ -145,6 +145,22 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
+
+            if(post.ChallengedPerson != null)
+            {
+                Notification notif = new Notification()
+                {
+                    IdUser = (int)post.ChallengedPerson,
+                    Type = "challenge",
+                    IdPost = post.IdPost,
+                    MessageFrom = null,
+                    CreationDate = DateTime.UtcNow,
+                    Seen = false
+                };
+
+                NotificationDAL.CreateNotification(notif);
+            }
+            
         }
 
         public static bool RemovePost(Post post)

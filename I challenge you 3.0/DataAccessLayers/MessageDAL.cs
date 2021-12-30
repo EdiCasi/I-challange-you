@@ -27,6 +27,27 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
+
+            Notification notif = NotificationDAL.GetNotificationByMessageFrom(message.Receiver.IdUser, message.Sender.IdUser);
+            if (notif != null)
+            {
+                notif.Seen = false;
+                notif.CreationDate = DateTime.UtcNow;
+                NotificationDAL.UpdateMessageNotification(notif);
+            }
+            else
+            {
+                notif = new Notification()
+                {
+                    IdUser = message.Receiver.IdUser,
+                    Type = "message",
+                    IdPost = null,
+                    MessageFrom = message.Sender.IdUser,
+                    CreationDate = DateTime.UtcNow,
+                    Seen = false
+                };
+                NotificationDAL.CreateNotification(notif);
+            }
         }
 
         public static List<Message> getMessages(User user1, User user2)
