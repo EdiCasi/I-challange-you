@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:I_challenge_you_3._0"
+      xmlns:uc="clr-namespace:I_challenge_you_3._0.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="HomePage"
@@ -130,6 +131,15 @@
             </Button.Resources>
             <Image Source="pack://application:,,,/Resources/Images/Messages Icon.png"/>
         </Button>
+
+        <uc:Notifications
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Margin="0 400 0 0"
+            ></uc:Notifications>
 
         <Button
             Grid.Column="1"
