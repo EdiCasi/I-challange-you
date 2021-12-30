@@ -109,6 +109,56 @@ namespace I_challenge_you_3._0.DataAccessLayers
             return allPosts;
         }
 
+        public static Post GetPostById(int id)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getPostById", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@postId", SqlDbType.Int).Value = id;
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    Post newPost = new Post()
+                    {
+                        IdPost = (int)reader["postId"],
+                        IdUser = (int)reader["userId"],
+                        CreationDate = DateTime.Parse(reader["creationDate"].ToString()),
+                        Title = reader["title"].ToString(),
+                        Content = (byte[])reader["contentPost"],
+                        ContentType = reader["contentType"].ToString(),
+                        Description = reader["description"].ToString(),
+                        Reactions = (int)reader["reactions"]
+                    };
+
+                    if (reader["challengedPerson"] != DBNull.Value)
+                    {
+                        newPost.ChallengedPerson = (int)reader["challengedPerson"];
+                    }
+                    else
+                    {
+                        newPost.ChallengedPerson = null;
+                    }
+
+
+                    if (reader["responseTo"] != DBNull.Value)
+                    {
+                        newPost.responseTo = (int)reader["responseTo"];
+                    }
+                    else
+                    {
+                        newPost.responseTo = null;
+                    }
+
+                    return newPost;
+                }
+                reader.Close();
+            }
+            return null;
+        }
+
         public static void addPost(Post post)
         {
             using (SqlConnection con = DALHelper.Connection)
@@ -160,7 +210,22 @@ namespace I_challenge_you_3._0.DataAccessLayers
 
                 NotificationDAL.CreateNotification(notif);
             }
-            
+
+            if (post.responseTo != null)
+            {
+                Notification notif = new Notification()
+                {
+                    IdUser = GetPostById((int)post.responseTo).IdUser,
+                    Type = "response",
+                    IdPost = post.IdPost,
+                    MessageFrom = null,
+                    CreationDate = DateTime.UtcNow,
+                    Seen = false
+                };
+
+                NotificationDAL.CreateNotification(notif);
+            }
+
         }
 
         public static bool RemovePost(Post post)

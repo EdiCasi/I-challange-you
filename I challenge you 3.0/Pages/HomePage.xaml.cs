@@ -32,8 +32,15 @@ namespace I_challenge_you_3._0
             DataContext = this;
             userImage.ImageSource = MainWindow.LoggedUser.Image;
             LoadPosts();
+            LoadNotificationCount();
         }
 
+        public void LoadNotificationCount()
+        {
+            notifCount.count.Content = (
+                NotificationDAL.GetNotificationCount(MainWindow.LoggedUser.IdUser) + UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser).Count()
+                ).ToString();
+        }
         public void LoadPosts()
         {
             List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);

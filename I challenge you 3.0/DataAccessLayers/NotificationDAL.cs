@@ -102,29 +102,20 @@ namespace I_challenge_you_3._0.DataAccessLayers
             return null;
         }
 
-        public static bool UpdateMessageNotification(Notification notif)
+        public static void UpdateMessageNotification(Notification notif)
         {
             using (SqlConnection con = DALHelper.Connection)
             {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand("changeMessageNotification", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@userId", SqlDbType.Int).Value = notif.IdUser;
-                    cmd.Parameters.Add("@messageFrom", SqlDbType.Int).Value = notif.MessageFrom;
-                    cmd.Parameters.Add("@creationDate", SqlDbType.DateTime).Value = notif.CreationDate;
-                    cmd.Parameters.Add("@seen", SqlDbType.Bit).Value = notif.Seen? 1 : 0;
+                SqlCommand cmd = new SqlCommand("changeMessageNotification", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@userId", SqlDbType.Int).Value = notif.IdUser;
+                cmd.Parameters.Add("@messageFrom", SqlDbType.Int).Value = notif.MessageFrom;
+                cmd.Parameters.Add("@creationDate", SqlDbType.DateTime).Value = notif.CreationDate;
+                cmd.Parameters.Add("@seen", SqlDbType.Bit).Value = notif.Seen? 1 : 0;
                     
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    con.Close();
-                    return false;
-                }
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
 

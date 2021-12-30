@@ -21,12 +21,7 @@ namespace I_challenge_you_3._0.UserControls
         public Notifications()
         {
             InitializeComponent();
-            GetNotifCount();
-        }
-
-        private void GetNotifCount()
-        {
-            notifCount.Content = NotificationDAL.GetNotificationCount(MainWindow.LoggedUser.IdUser).ToString();
+            DataContext = this;
         }
     }
 }

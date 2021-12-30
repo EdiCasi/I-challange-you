@@ -133,6 +133,7 @@
         </Button>
 
         <uc:Notifications
+            x:Name="notifCount"
             Grid.Column="1"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"

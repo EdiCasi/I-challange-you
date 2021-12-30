@@ -27,7 +27,7 @@
             HorizontalAlignment="Right"
             >
             <Label
-                x:Name="notifCount"
+                x:Name="count"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalContentAlignment="Center"
