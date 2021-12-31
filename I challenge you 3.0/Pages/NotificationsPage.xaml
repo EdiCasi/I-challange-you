@@ -1,0 +1,167 @@
+﻿<Page x:Class="I_challenge_you_3._0.Pages.NotificationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NotificationsPage"
+      Background="Turquoise">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Content="Notifications"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            FontSize="30"
+            FontWeight="Bold"
+        ></Label>
+
+        <ScrollViewer 
+            Background="DarkTurquoise"
+            Grid.Column="0"
+            Grid.Row="1"
+            Margin="10"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="friendsPanel"
+                Margin="0 0 0 40"
+            >
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    >
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Content="Friend Requests"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="18"
+                        FontWeight="Bold"
+                    ></Label>
+                </Border>
+
+                <Button
+                    x:Name="friendsButton"
+                    Height="35"
+                    Width="100"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 0"
+                    Content="Friends"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Click="Friends_Click"
+                >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter 
+                                Property="CornerRadius"
+                                Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer 
+            Background="DarkTurquoise"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="10"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="messagePanel"
+                Margin="0 0 0 40"
+            >
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    >
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Content="Messages"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="18"
+                        FontWeight="Bold"
+                    ></Label>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer 
+            Background="DarkTurquoise"
+            Grid.Column="2"
+            Grid.Row="1"
+            Margin="10"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="postPanel"
+                Margin="0 0 0 40"
+            >
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    >
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Content="Challenges / Responses"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="18"
+                        FontWeight="Bold"
+                    ></Label>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="2"
+            Height="35"
+            Width="100"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="0 0 0 0"
+            Content="Back"
+            FontSize="18"
+            FontWeight="Bold"
+            Click="Back_Click"
+        >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>

@@ -8,7 +8,9 @@
              d:DesignHeight="50" d:DesignWidth="50"
              Height="50" Width="50">
     <Grid>
-        <Button>
+        <Button
+            Click="Notifications_Click"
+            >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter 
@@ -19,12 +21,14 @@
             <Image Source="pack://application:,,,/Resources/Images/Notifications Icon.png"/>
         </Button>
         <Border 
+            MouseUp="Notifications_MouseUp"
             Background="Red"
             CornerRadius="7"
             Height="25"
             Width="25"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Right"
+            Margin="0 0 5 5"
             >
             <Label
                 x:Name="count"
@@ -32,7 +36,7 @@
                 HorizontalAlignment="Center"
                 VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center"
-                FontSize="10"
+                FontSize="12"
                 FontWeight="Bold"
                 >
             </Label>

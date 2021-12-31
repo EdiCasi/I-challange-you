@@ -92,5 +92,33 @@ namespace I_challenge_you_3._0.DataAccessLayers
             }
             return messages;
         }
+
+        public static Message getLastMessage(User sender, User receiver)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getLastMessage", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@user1Id", SqlDbType.Int).Value = sender.IdUser;
+                cmd.Parameters.Add("@user2Id", SqlDbType.Int).Value = receiver.IdUser;
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Message()
+                    {
+                        IdMessage = (int)reader["messageId"],
+                        Sender = sender,
+                        Receiver = receiver,
+                        Text = reader["text"].ToString(),
+                        CreationDate = DateTime.Parse(reader["creationDate"].ToString())
+                    };
+                }
+                reader.Close();
+            }
+            return null;
+        }
     }
 }

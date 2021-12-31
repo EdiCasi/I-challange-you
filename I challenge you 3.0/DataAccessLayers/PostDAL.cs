@@ -47,7 +47,6 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         newPost.ChallengedPerson = null;
                     }
 
-
                     allPosts.Add(newPost);
                 }
                 reader.Close();
@@ -100,7 +99,6 @@ namespace I_challenge_you_3._0.DataAccessLayers
                     {
                         newPost.responseTo = null;
                     }
-
 
                     allPosts.Add(newPost);
                 }
@@ -161,6 +159,8 @@ namespace I_challenge_you_3._0.DataAccessLayers
 
         public static void addPost(Post post)
         {
+            int postId;
+
             using (SqlConnection con = DALHelper.Connection)
             {
                 SqlCommand cmd = new SqlCommand("createPost", con);
@@ -192,7 +192,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 }
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+                postId = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
             }
 
@@ -202,7 +202,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 {
                     IdUser = (int)post.ChallengedPerson,
                     Type = "challenge",
-                    IdPost = post.IdPost,
+                    IdPost = postId,
                     MessageFrom = null,
                     CreationDate = DateTime.UtcNow,
                     Seen = false
@@ -217,7 +217,7 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 {
                     IdUser = GetPostById((int)post.responseTo).IdUser,
                     Type = "response",
-                    IdPost = post.IdPost,
+                    IdPost = postId,
                     MessageFrom = null,
                     CreationDate = DateTime.UtcNow,
                     Seen = false
@@ -234,6 +234,8 @@ namespace I_challenge_you_3._0.DataAccessLayers
             {
                 try
                 {
+                    NotificationDAL.RemoveNotificationByPostId(post.IdPost);
+
                     SqlCommand cmd = new SqlCommand("removePost", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@postId", SqlDbType.Int).Value = post.IdPost;

@@ -1,4 +1,5 @@
 ﻿using I_challenge_you_3._0.DataAccessLayers;
+using I_challenge_you_3._0.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,16 @@ namespace I_challenge_you_3._0.UserControls
         {
             InitializeComponent();
             DataContext = this;
+        }
+
+        private void Notifications_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.Frame.NavigationService.Navigate(new NotificationsPage());
+        }
+
+        private void Notifications_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Frame.NavigationService.Navigate(new NotificationsPage());
         }
     }
 }

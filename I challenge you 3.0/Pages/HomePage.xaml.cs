@@ -37,15 +37,15 @@ namespace I_challenge_you_3._0
 
         public void LoadNotificationCount()
         {
-            notifCount.count.Content = (
-                NotificationDAL.GetNotificationCount(MainWindow.LoggedUser.IdUser) + UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser).Count()
-                ).ToString();
+            int c = NotificationDAL.GetNotificationCount(MainWindow.LoggedUser.IdUser) + (
+                                UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser).Count() > 0 ? 1 : 0);
+            notifCount.count.Content = Math.Min(c, 99).ToString();
         }
         public void LoadPosts()
         {
             List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);
 
-            foreach (var post in posts )
+            foreach (var post in posts)
             {
                 DisplayPost displayPost = new DisplayPost(post, this);
                 displayPost.Padding = new Thickness(10);
@@ -67,7 +67,7 @@ namespace I_challenge_you_3._0
         {
             NavigationService.Navigate(new SearchPage());
         }
-        
+
         private void Friends_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new FriendsPage());
