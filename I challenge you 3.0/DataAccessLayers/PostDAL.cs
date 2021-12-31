@@ -47,7 +47,6 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         newPost.ChallengedPerson = null;
                     }
 
-
                     allPosts.Add(newPost);
                 }
                 reader.Close();
@@ -101,7 +100,6 @@ namespace I_challenge_you_3._0.DataAccessLayers
                         newPost.responseTo = null;
                     }
 
-
                     allPosts.Add(newPost);
                 }
                 reader.Close();
@@ -109,8 +107,60 @@ namespace I_challenge_you_3._0.DataAccessLayers
             return allPosts;
         }
 
+        public static Post GetPostById(int id)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getPostById", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@postId", SqlDbType.Int).Value = id;
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    Post newPost = new Post()
+                    {
+                        IdPost = (int)reader["postId"],
+                        IdUser = (int)reader["userId"],
+                        CreationDate = DateTime.Parse(reader["creationDate"].ToString()),
+                        Title = reader["title"].ToString(),
+                        Content = (byte[])reader["contentPost"],
+                        ContentType = reader["contentType"].ToString(),
+                        Description = reader["description"].ToString(),
+                        Reactions = (int)reader["reactions"]
+                    };
+
+                    if (reader["challengedPerson"] != DBNull.Value)
+                    {
+                        newPost.ChallengedPerson = (int)reader["challengedPerson"];
+                    }
+                    else
+                    {
+                        newPost.ChallengedPerson = null;
+                    }
+
+
+                    if (reader["responseTo"] != DBNull.Value)
+                    {
+                        newPost.responseTo = (int)reader["responseTo"];
+                    }
+                    else
+                    {
+                        newPost.responseTo = null;
+                    }
+
+                    return newPost;
+                }
+                reader.Close();
+            }
+            return null;
+        }
+
         public static void addPost(Post post)
         {
+            int postId;
+
             using (SqlConnection con = DALHelper.Connection)
             {
                 SqlCommand cmd = new SqlCommand("createPost", con);
@@ -142,9 +192,40 @@ namespace I_challenge_you_3._0.DataAccessLayers
                 }
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+                postId = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
             }
+
+            if(post.ChallengedPerson != null)
+            {
+                Notification notif = new Notification()
+                {
+                    IdUser = (int)post.ChallengedPerson,
+                    Type = "challenge",
+                    IdPost = postId,
+                    MessageFrom = null,
+                    CreationDate = DateTime.UtcNow,
+                    Seen = false
+                };
+
+                NotificationDAL.CreateNotification(notif);
+            }
+
+            if (post.responseTo != null)
+            {
+                Notification notif = new Notification()
+                {
+                    IdUser = GetPostById((int)post.responseTo).IdUser,
+                    Type = "response",
+                    IdPost = postId,
+                    MessageFrom = null,
+                    CreationDate = DateTime.UtcNow,
+                    Seen = false
+                };
+
+                NotificationDAL.CreateNotification(notif);
+            }
+
         }
 
         public static bool RemovePost(Post post)
@@ -153,6 +234,8 @@ namespace I_challenge_you_3._0.DataAccessLayers
             {
                 try
                 {
+                    NotificationDAL.RemoveNotificationByPostId(post.IdPost);
+
                     SqlCommand cmd = new SqlCommand("removePost", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@postId", SqlDbType.Int).Value = post.IdPost;

@@ -1,6 +1,7 @@
 ﻿using I_challenge_you_3._0.Models;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace I_challenge_you_3._0
 {
@@ -11,9 +12,11 @@ namespace I_challenge_you_3._0
     {
         public static User LoggedUser { get; set; }
         public static HomePage HomePage { get; set; }
+        public static Frame Frame { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            Frame = frame;
         }
 
         private void Window_Closed(object sender, System.EventArgs e)
