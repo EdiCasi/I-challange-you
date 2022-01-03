@@ -29,6 +29,7 @@ namespace I_challenge_you_3._0.UserControls
             FriendshipDAL.acceptRequest(MainWindow.LoggedUser.IdUser, displayedFriend.IdUser);
             ((Panel)this.Parent).Children.Remove(this);
             this.page.friendsPanel.Children.Add(new Friend(displayedFriend, page));
+            MainWindow.HomePage = new HomePage();
 
             MainWindow.HomePage.LoadNotificationCount();
         }
