@@ -51,13 +51,13 @@ namespace I_challenge_you_3._0.Pages
         {
             var displayedPost = (DisplayPost)sender;
             displayedPost.usernameLabel.Content = "Clicked";
-            CreatePostPage createPostPage = new CreatePostPage(MainWindow.LoggedUser);
+            CreateResponse createResponse = new CreateResponse(MainWindow.LoggedUser);
 
-            createPostPage.titleTextbox.Text = "Response to: " + (string)displayedPost.titleLabel.Content;
-            createPostPage.titleTextbox.IsEnabled = false;
-            createPostPage.responseToId = displayedPost.post.IdPost;
+            createResponse.titleTextbox.Text = (string)displayedPost.titleLabel.Content;
+            createResponse.titleTextbox.IsEnabled = false;
+            createResponse.responseToId = displayedPost.post.IdPost;
 
-            NavigationService.Navigate(createPostPage);
+            NavigationService.Navigate(createResponse);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

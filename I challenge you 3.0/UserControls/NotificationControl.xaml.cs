@@ -26,11 +26,13 @@ namespace I_challenge_you_3._0.UserControls
         public Notification Notif { get; set; }
         public User OtherUser { get; set; }
         public Post Post { get; set; }
-        public NotificationControl(Notification notif)
+        public Page Page { get; set; }
+        public NotificationControl(Notification notif, Page page)
         {
             InitializeComponent();
             DataContext = this;
             Notif = notif;
+            Page = page;
             LoadNotification();
         }
 
@@ -65,9 +67,21 @@ namespace I_challenge_you_3._0.UserControls
 
         private void NotificationControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessagesPage page = new MessagesPage();
-            MessagesPage.LoadMessages(OtherUser, page);
-            MainWindow.Frame.NavigationService.Navigate(page);
+            NotificationDAL.RemoveNotificationById(Notif.IdNotification);
+            ((Panel)this.Parent).Children.Remove(this);
+
+            switch (Notif.Type)
+            {
+                case "message":
+                    MessagesPage page = new MessagesPage();
+                    MessagesPage.LoadMessages(OtherUser, page);
+                    MainWindow.Frame.NavigationService.Navigate(page);
+                    break;
+                case "challenge":
+                case "response":
+                    MainWindow.Frame.NavigationService.Navigate(new PostPage(Post, Page));
+                    break;
+            }
         }
     }
 }
