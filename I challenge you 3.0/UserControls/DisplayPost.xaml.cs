@@ -30,14 +30,14 @@ namespace I_challenge_you_3._0.UserControls
         public User postUser { get; set; }
         public User challengedPerson { get; set; }
         public User loggedUser { get; set; }
-        private HomePage page { get; set; }
-        public DisplayPost(Post post, HomePage page)
+        private Page page { get; set; }
+        public DisplayPost(Post post, Page page)
         {
             InitializeComponent();
             loggedUser = MainWindow.LoggedUser;
             DataContext = this;
             this.post = post;
-            this.postUser = UserDAL.getUserById(post.IdUser);
+            postUser = UserDAL.getUserById(post.IdUser);
             this.page = page;
 
             LoadContent();
@@ -82,7 +82,7 @@ namespace I_challenge_you_3._0.UserControls
             {
                 challengeFor.Visibility = Visibility.Visible;
                 challengedPersonName.Visibility = Visibility.Visible;
-                this.challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
+                challengedPerson = UserDAL.getUserById((int)post.ChallengedPerson);
             }
 
             if (post.responseTo != null)
@@ -184,7 +184,6 @@ namespace I_challenge_you_3._0.UserControls
                 likeLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "like");
                 loveLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "love");
                 angryLabel.Content = ReactionDAL.getNumberOfReactions(post.IdPost, "angry");
-                
             }
         }
 
