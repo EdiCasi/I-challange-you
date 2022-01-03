@@ -6,27 +6,31 @@
              xmlns:local="clr-namespace:I_challenge_you_3._0.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Aquamarine" Height="89.573" Width="500">
-    <Grid>
-        <Label 
-            HorizontalAlignment="Left"
-            Margin="38,21,0,0" 
-            VerticalAlignment="Top" 
-            Height="36"
-            Width="249"
-            FontSize="18"
-            Content="{Binding displayedFriend.Username}"
+             Height="89.573" Width="500">
+    <Border
+        Background="Aquamarine"
+        CornerRadius="20">
+        <Grid>
+            <Label 
+                HorizontalAlignment="Left"
+                Margin="35,27,0,0" 
+                VerticalAlignment="Top" 
+                Height="36"
+                Width="249"
+                FontSize="18"
+                Content="{Binding displayedFriend.Username}"
+                />
+            <Button 
+                x:Name="selectButton"
+                Content="Select" 
+                HorizontalAlignment="Left"
+                Margin="342,0,0,0" 
+                Width="120"
+                FontSize="16" 
+                Height="29"
+                Click="selectFriend"
+                VerticalAlignment="Center"
             />
-        <Button 
-            x:Name="selectButton"
-            Content="Select" 
-            HorizontalAlignment="Left"
-            Margin="342,28,0,0" 
-            VerticalAlignment="Top"
-            Width="120"
-            FontSize="16" 
-            Height="29"
-            Click="selectFriend"
-            />
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>

@@ -112,6 +112,9 @@
     <Compile Include="UserControls\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LiteDisplayPost.xaml.cs">
+      <DependentUpon>LiteDisplayPost.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MessageControl.xaml.cs">
       <DependentUpon>MessageControl.xaml</DependentUpon>
     </Compile>
@@ -245,6 +248,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Friend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LiteDisplayPost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

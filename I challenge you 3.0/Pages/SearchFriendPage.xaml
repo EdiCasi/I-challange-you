@@ -44,7 +44,7 @@
             FontSize="22"
             TextWrapping="Wrap"
             AcceptsReturn="True"
-            HorizontalAlignment="Right"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             VerticalScrollBarVisibility="Auto"
             Text="Type a name"
@@ -58,7 +58,7 @@
             Height="35"
             FontWeight="Bold"
             VerticalAlignment="Top"
-            HorizontalAlignment="Right" 
+            Margin="0 0 -320 0"
             Click="Search_Click"
             />
 
@@ -72,6 +72,7 @@
             Height="35"
             FontWeight="Bold"
             HorizontalAlignment="Center" 
+            VerticalAlignment="Top"
             />
 
         <ScrollViewer 

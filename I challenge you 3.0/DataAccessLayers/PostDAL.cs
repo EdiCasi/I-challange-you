@@ -107,6 +107,59 @@ namespace I_challenge_you_3._0.DataAccessLayers
             return allPosts;
         }
 
+        public static List<Post> getOwnPosts(int idUser)
+        {
+            List<Post> allPosts = new List<Post>();
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getOwnPost", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter userId = new SqlParameter("@userId", idUser);
+
+                cmd.Parameters.Add(userId);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Post newPost = new Post()
+                    {
+                        IdPost = (int)reader["postId"],
+                        IdUser = (int)reader["userId"],
+                        CreationDate = DateTime.Parse(reader["creationDate"].ToString()),
+                        Title = reader["title"].ToString(),
+                        Content = (byte[])reader["contentPost"],
+                        ContentType = reader["contentType"].ToString(),
+                        Description = reader["description"].ToString(),
+                        Reactions = (int)reader["reactions"]
+                    };
+
+                    if (reader["challengedPerson"] != DBNull.Value)
+                    {
+                        newPost.ChallengedPerson = (int)reader["challengedPerson"];
+                    }
+                    else
+                    {
+                        newPost.ChallengedPerson = null;
+                    }
+
+
+                    if (reader["responseTo"] != DBNull.Value)
+                    {
+                        newPost.responseTo = (int)reader["responseTo"];
+                    }
+                    else
+                    {
+                        newPost.responseTo = null;
+                    }
+
+                    allPosts.Add(newPost);
+                }
+                reader.Close();
+            }
+            return allPosts;
+        }
+
         public static Post GetPostById(int id)
         {
             using (SqlConnection con = DALHelper.Connection)

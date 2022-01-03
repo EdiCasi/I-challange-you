@@ -1,8 +1,10 @@
 ﻿using I_challenge_you_3._0.Converters;
 using I_challenge_you_3._0.DataAccessLayers;
 using I_challenge_you_3._0.Models;
+using I_challenge_you_3._0.UserControls;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -29,6 +31,20 @@ namespace I_challenge_you_3._0.Pages
             DataContext = this;
             userImage.ImageSource = MainWindow.LoggedUser.Image;
             username.Content = MainWindow.LoggedUser.Username;
+            LoadPosts();
+        }
+
+        public void LoadPosts()
+        {
+            List<Post> posts = PostDAL.getOwnPosts(MainWindow.LoggedUser.IdUser);
+
+            foreach (var post in posts)
+            {
+                post.ContentType = "";
+                LiteDisplayPost displayPost = new LiteDisplayPost(post, this);
+                displayPost.Padding = new Thickness(10);
+                postPanel.Children.Add(displayPost);
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

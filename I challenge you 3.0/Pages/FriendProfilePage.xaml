@@ -6,76 +6,81 @@
       xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Width="1000"
+      Height="600"
       Title="FriendProfilePage"
       Background="Turquoise">
 
     <Grid>
-        <Label 
-            Content="Username:" 
-            HorizontalAlignment="Left" 
-            Margin="197,112,0,0" 
-            VerticalAlignment="Top" 
-            Height="37"
-            Width="86"
-            FontSize="14"
-            />
+        <Grid Margin="59,46,787,370" Background="AliceBlue">
+            <Label Name="username" FontWeight="Bold" FontSize="20" Content="test" HorizontalAlignment="Left" Margin="10,135,0,0" HorizontalContentAlignment ="Center"  VerticalAlignment="Top" RenderTransformOrigin="0.464,3.155" Height="39" Width="134"/>
+        </Grid>
 
-        
-        <Label 
+        <Border 
+            CornerRadius="50"
+            Height="100"
+            Width="100"
+            BorderBrush="Black"
+            BorderThickness="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Margin="84,69,816,0">
+            <Border.Background>
+                <ImageBrush Stretch="Fill" x:Name="userImage"/>
+            </Border.Background>
+        </Border>
+
+
+        <Grid Margin="241,46,52,480" Background="Transparent">
+            <Label Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+            <Label 
             HorizontalAlignment="Left"
-            Margin="379,112,0,0"
+            Margin="100,23,0,0"
             VerticalAlignment="Top" 
-            Height="36"
-            Width="180"
-            FontSize="14"
+            Height="23"
+            Width="241"
+            FontSize="10"
             Content="{Binding friend.Username}"
             Background="White"
             />
+        </Grid>
 
-        <Label 
-            Content="Email: " 
-            HorizontalAlignment="Left" 
-            Margin="197,162,0,0" 
-            VerticalAlignment="Top" 
-            Height="37"
-            Width="86"
-            FontSize="14"
-            />
-
-
-        <Label 
+        <Grid Margin="241,90,52,412" Background="Transparent">
+            <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,26,0,0"/>
+            <Label 
             HorizontalAlignment="Left"
-            Margin="379,162,0,0"
+            Margin="100,29,0,0"
             VerticalAlignment="Top" 
-            Height="36"
-            Width="180"
-            FontSize="14"
+            Height="23"
+            Width="241"
+            FontSize="10"
             Content="{Binding friend.Email}"
             Background="White"
             />
+        </Grid>
 
-        <Label 
-            Content="Status:" 
-            HorizontalAlignment="Left" 
-            Margin="197,212,0,0" 
-            VerticalAlignment="Top" 
-            Height="37"
-            Width="86"
-            FontSize="14"
-            />
-
-
-        <Label 
+        <Grid Margin="241,134,52,351" Background="Transparent">
+            <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,26,0,0"/>
+            <Label 
             HorizontalAlignment="Left"
-            Margin="379,212,0,0"
+            Margin="100,29,0,0"
             VerticalAlignment="Top" 
-            Height="36"
-            Width="180"
-            FontSize="14"
+            Height="23"
+            Width="241"
+            FontSize="10"
             Content="{Binding friend.Status}"
             Background="{Binding statusColor}"
             />
+        </Grid>
 
+        <ScrollViewer Margin="59 250 52 90"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="postPanel"
+                Margin="0 0 0 40"
+            ></StackPanel>
+        </ScrollViewer>
+        
         <Button
             Height="35"
             Width="100"
