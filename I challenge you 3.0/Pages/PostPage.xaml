@@ -1,0 +1,50 @@
+﻿<Page x:Class="I_challenge_you_3._0.Pages.PostPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
+      xmlns:uc="clr-namespace:I_challenge_you_3._0.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PostPage"
+      Background="Turquoise">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        
+        <ScrollViewer 
+            Background="DarkTurquoise"
+            Grid.Row="0"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="postPanel"
+                Margin="0 0 0 40"
+            ></StackPanel>
+        </ScrollViewer>
+
+        <Button
+            Grid.Row="1"
+            Height="35"
+            Width="100"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="0 0 0 0"
+            Content="Back"
+            FontSize="18"
+            FontWeight="Bold"
+            Click="Back_Click"
+        >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius"
+                        Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>

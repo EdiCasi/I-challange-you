@@ -190,6 +190,19 @@ namespace I_challenge_you_3._0.DataAccessLayers
             }
         }
 
+        public static int GetNotificationCount(int userId)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getNotificationCount", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
+                con.Open();
+
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+
         public static void RemoveNotificationByPostId(int postId)
         {
             using (SqlConnection con = DALHelper.Connection)
@@ -203,16 +216,16 @@ namespace I_challenge_you_3._0.DataAccessLayers
             }
         }
 
-        public static int GetNotificationCount(int userId)
+        public static void RemoveNotificationById(int notifId)
         {
             using (SqlConnection con = DALHelper.Connection)
             {
-                SqlCommand cmd = new SqlCommand("getNotificationCount", con);
+                SqlCommand cmd = new SqlCommand("removeNotificationById", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
+                cmd.Parameters.Add("@notifId", SqlDbType.Int).Value = notifId;
                 con.Open();
-
-                return (int)cmd.ExecuteScalar();
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
     }

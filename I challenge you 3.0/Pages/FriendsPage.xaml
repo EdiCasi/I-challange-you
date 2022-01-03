@@ -13,7 +13,7 @@
 
         <ScrollViewer 
             Grid.Column="0"
-            VerticalScrollBarVisibility="Visible"
+            VerticalScrollBarVisibility="Hidden"
             Margin="0,10,0,99.6">
             <StackPanel
                 x:Name="friendsPanel"

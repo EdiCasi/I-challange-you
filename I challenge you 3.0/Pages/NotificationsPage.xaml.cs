@@ -58,7 +58,7 @@ namespace I_challenge_you_3._0.Pages
                 {
                     if(notif.Type == "message")
                     {
-                        messagePanel.Children.Add(new NotificationControl(notif)
+                        messagePanel.Children.Add(new NotificationControl(notif, this)
                         {
                             Padding = new Thickness(10)
                         });
@@ -66,7 +66,7 @@ namespace I_challenge_you_3._0.Pages
                     }
                     else
                     {
-                        postPanel.Children.Add(new NotificationControl(notif)
+                        postPanel.Children.Add(new NotificationControl(notif, this)
                         {
                             Padding = new Thickness(10)
                         });
