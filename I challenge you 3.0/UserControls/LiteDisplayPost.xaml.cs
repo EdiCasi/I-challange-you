@@ -200,6 +200,11 @@ namespace I_challenge_you_3._0.UserControls
             }
         }
 
+        private void SeeMore_Click(object sender, RoutedEventArgs e)
+        {
+            page.NavigationService.Navigate(new PostPage(post, page));
+        }
+
         private void EditPost_Click(object sender, RoutedEventArgs e)
         {
             page.NavigationService.Navigate(new EditPostPage(post));

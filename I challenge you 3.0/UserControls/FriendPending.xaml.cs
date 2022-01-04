@@ -29,16 +29,16 @@ namespace I_challenge_you_3._0.UserControls
             FriendshipDAL.acceptRequest(MainWindow.LoggedUser.IdUser, displayedFriend.IdUser);
             ((Panel)this.Parent).Children.Remove(this);
             this.page.friendsPanel.Children.Add(new Friend(displayedFriend, page));
-
-            MainWindow.HomePage.LoadNotificationCount();
+            MainPage mainPage = new MainPage();
+            mainPage.LoadNotificationCount();
         }
 
         private void Reject(object sender, RoutedEventArgs e)
         {
             FriendshipDAL.rejectRequest(MainWindow.LoggedUser.IdUser, displayedFriend.IdUser);
             ((Panel)this.Parent).Children.Remove(this);
-
-            MainWindow.HomePage.LoadNotificationCount();
+            MainPage mainPage = new MainPage();
+            mainPage.LoadNotificationCount();
         }
     }
 }

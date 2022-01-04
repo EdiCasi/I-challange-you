@@ -20,7 +20,7 @@ namespace I_challenge_you_3._0.Pages
             this.friend = friend;
             userImage.ImageSource = friend.Image;
             username.Content = friend.Username;
-            switch(this.friend.Status)
+            switch (this.friend.Status)
             {
                 case "Available":
                     this.statusColor = new SolidColorBrush(Colors.Green);
@@ -39,18 +39,13 @@ namespace I_challenge_you_3._0.Pages
         {
             List<Post> posts = PostDAL.getOwnPosts(this.friend.IdUser);
 
-            foreach(var post in posts)
+            foreach (var post in posts)
             {
                 post.ContentType = "";
                 LiteDisplayPost displayPost = new LiteDisplayPost(post, this);
                 displayPost.Padding = new Thickness(10);
                 postPanel.Children.Add(displayPost);
             }
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(MainWindow.HomePage);
         }
     }
 }

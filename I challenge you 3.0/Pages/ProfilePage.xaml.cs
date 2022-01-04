@@ -69,11 +69,6 @@ namespace I_challenge_you_3._0.Pages
             ch.Show();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(MainWindow.HomePage);
-        }
-
         private void Image_Click(object sender, RoutedEventArgs e)
         {
             byte[] image;

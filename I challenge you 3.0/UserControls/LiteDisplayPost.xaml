@@ -9,7 +9,7 @@
 
     <Grid>
         <Border 
-            Background="LightGray"
+            Background="Aquamarine"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -178,7 +178,7 @@
                             <ColumnDefinition Width="40*"/>
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition Width="40*"/>
-                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition Width="400"/>
                         </Grid.ColumnDefinitions>
                         <Button 
                         Content="👍"
@@ -248,6 +248,16 @@
                         Content="0"
                         Visibility="Visible"/>
 
+                        <Button 
+                            Height="25"
+                        Content="See more"
+                        Grid.Column="8"
+                        Click="SeeMore_Click"
+                        HorizontalAlignment="Right"
+                        FontSize="13" 
+                        FontWeight="Bold"
+                        Foreground="Black"
+                        />
                     </Grid>
                 </Border>
             </StackPanel>

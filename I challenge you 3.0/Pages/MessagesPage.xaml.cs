@@ -61,11 +61,6 @@ namespace I_challenge_you_3._0.Pages
             page.messagesScroll.ScrollToEnd();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(MainWindow.HomePage);
-        }
-
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             if(!String.IsNullOrWhiteSpace(messageText.Text))

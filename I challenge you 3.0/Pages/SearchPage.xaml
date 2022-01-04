@@ -6,6 +6,8 @@
       xmlns:local="clr-namespace:I_challenge_you_3._0.Pages" xmlns:usercontrols="clr-namespace:I_challenge_you_3._0.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Width="880"
+      Height="600"
       Title="SearchPage"
       Background="Turquoise">
 
@@ -49,32 +51,12 @@
 
         <ScrollViewer 
             VerticalScrollBarVisibility="Hidden" 
-            Margin="20,116,20,76.6"
+            Margin="20,116,20,50"
             >
             <StackPanel
                 x:Name="searchedPanel"
             ></StackPanel>
         </ScrollViewer>
-
-        <Button
-            Height="35"
-            Width="100"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Margin="0 0 0 50"
-            Content="Back"
-            FontSize="18"
-            FontWeight="Bold"
-            Click="Back_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
 
     </Grid>
 </Page>
