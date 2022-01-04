@@ -27,7 +27,8 @@ namespace I_challenge_you_3._0.UserControls
             {
                 notif.Seen = true;
                 NotificationDAL.UpdateMessageNotification(notif);
-                MainWindow.HomePage.LoadNotificationCount();
+                MainPage mainPage = new MainPage();
+                mainPage.LoadNotificationCount();
             }
         }
     }

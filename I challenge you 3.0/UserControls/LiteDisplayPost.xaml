@@ -1,0 +1,266 @@
+﻿<UserControl x:Class="I_challenge_you_3._0.UserControls.LiteDisplayPost"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:I_challenge_you_3._0.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Border 
+            Background="Aquamarine"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <StackPanel>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="75"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border
+                            Grid.Column="0"
+                            Height="50"
+                            Width="50"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            CornerRadius="50">
+                            <Border.Background>
+                                <ImageBrush 
+                                    Stretch="Fill"
+                                    ImageSource="{Binding postUser.Image}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <StackPanel 
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+                            <Label
+                                x:Name="usernameLabel"
+                                VerticalContentAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Margin="10 0 0 0"
+                                Content="{Binding postUser.Username}"/>
+
+                            <Label
+                                x:Name="challengeFor"
+                                Content="challenged"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Foreground="Red"
+                                Visibility="Collapsed"
+                                VerticalContentAlignment="Center"
+                                />
+
+                            <Label
+                                x:Name="challengedPersonName"
+                                Visibility="Collapsed"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                VerticalContentAlignment="Center"
+                                Content="{Binding challengedPerson.Username}"
+                                />
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                            <!-- Edit Post -->
+                            <Button
+                                x:Name="editPost"
+                                Visibility="Collapsed"
+                                Height="30"
+                                Width="30"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Margin="0 0 0 0"
+                                Click="EditPost_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter 
+                                            Property="CornerRadius"
+                                            Value="10"></Setter>
+                                    </Style>
+                                </Button.Resources>
+                                <Image Height="15" Source="pack://application:,,,/Resources/Images/EditIcon.png"/>
+                            </Button>
+                            <!-- Remove Post -->
+                            <Button
+                                x:Name="removePost"
+                                Visibility="Collapsed"
+                                Height="30"
+                                Width="30"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Margin="0 0 0 0"
+                                Click="RemovePost_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter 
+                                            Property="CornerRadius"
+                                            Value="10"></Setter>
+                                    </Style>
+                                </Button.Resources>
+                                <Image Height="15" Source="pack://application:,,,/Resources/Images/XIcon.png"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Label
+                    x:Name="titleLabel"
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Content="{Binding post.Title}"
+                    Visibility="Visible"/>
+
+                <Label
+                    x:Name="descriptionLabel"
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10"
+                    Visibility="Collapsed">
+                    <TextBlock
+                    Text="{Binding post.Description}"
+                    TextTrimming="CharacterEllipsis"
+                    FontSize="18"  
+                    LineHeight='35'
+                    MaxHeight="35"
+                    />
+                </Label>
+
+                <Border
+                    x:Name="contentContainer"
+                    BorderBrush="Black"
+                    BorderThickness="0 0 0 1"
+                    Padding="10" 
+                    Visibility="Collapsed">
+                    <Grid>
+                        <Image 
+                            x:Name="postImage" 
+                            Visibility="Collapsed"/>
+                        <MediaElement 
+                            x:Name="postVideo"
+                            Visibility="Collapsed"
+                            LoadedBehavior="Manual"
+                            Loaded="MediaLoaded"
+                            MouseDown="MediaPlayToggle"
+                            MediaEnded="MediaEnded"/>
+                    </Grid>
+                </Border>
+
+                <Border
+                    Padding="10"
+                    x:Name="reactionsContainer">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Button 
+                        Content="👍"
+                        Grid.Column="0" 
+                        Click="Like_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="Orange"
+                        />
+                        <Label
+                        x:Name="likeLabel"
+                        BorderBrush="Black"
+                        Grid.Column="1"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+
+                        <Button 
+                        Content="❤"
+                        Grid.Column="2" 
+                        Click="Love_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="Red"
+                        />
+                        <Label
+                        x:Name="loveLabel"
+                        BorderBrush="Black"
+                        Grid.Column="3"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+
+                        <Button 
+                        Content="😠" 
+                        Grid.Column="4" 
+                        Click="Angry_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="Firebrick"
+                        />
+                        <Label
+                        x:Name="angryLabel"
+                        BorderBrush="Black"
+                        Grid.Column="5"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+
+                        <Button 
+                        Content="😂"
+                        Grid.Column="6"
+                        Click="Laugh_Click"
+                        FontSize="18" 
+                        FontWeight="Bold"
+                        Foreground="LightSeaGreen"
+                        />
+                        <Label
+                        x:Name="laughLabel"
+                        BorderBrush="Black"
+                        Grid.Column="7"
+                        BorderThickness="0 0 0 0"
+                        FontSize="18"
+                        Content="0"
+                        Visibility="Visible"/>
+
+                        <Button 
+                            Height="25"
+                        Content="See more"
+                        Grid.Column="8"
+                        Click="SeeMore_Click"
+                        HorizontalAlignment="Right"
+                        FontSize="13" 
+                        FontWeight="Bold"
+                        Foreground="Black"
+                        />
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

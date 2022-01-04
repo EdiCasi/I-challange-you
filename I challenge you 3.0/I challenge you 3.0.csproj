@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -74,6 +75,9 @@
     </Compile>
     <Compile Include="Pages\EditPostPage.xaml.cs">
       <DependentUpon>EditPostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MessagesPage.xaml.cs">
       <DependentUpon>MessagesPage.xaml</DependentUpon>
@@ -114,6 +118,9 @@
     </Compile>
     <Compile Include="UserControls\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LiteDisplayPost.xaml.cs">
+      <DependentUpon>LiteDisplayPost.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MessageControl.xaml.cs">
       <DependentUpon>MessageControl.xaml</DependentUpon>
@@ -162,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CreateChallengePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,6 +266,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\LiteDisplayPost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\MessageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -336,6 +351,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Notifications Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\HomePage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

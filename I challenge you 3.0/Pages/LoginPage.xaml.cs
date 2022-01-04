@@ -38,8 +38,8 @@ namespace I_challenge_you_3._0
             else
             {
                 MainWindow.LoggedUser = user;
-                MainWindow.HomePage = new HomePage();
-                NavigationService.Navigate(MainWindow.HomePage);
+                MainWindow.MainPage = new MainPage();
+                NavigationService.Navigate(MainWindow.MainPage);
             }
         }
 

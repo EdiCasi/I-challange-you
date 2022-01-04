@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateChallengePage"
       Background="Turquoise"
-      Width="1000"
+      Width="880"
       Height="600"
       >
 
@@ -107,7 +107,7 @@
             Width="130"
             Height="35"
             FontWeight="Bold"
-            HorizontalAlignment="Right"
+            Margin="0 0 -500 0"
            />
 
 
@@ -183,7 +183,7 @@
             FontWeight="Bold"
             VerticalAlignment="Top"
             HorizontalAlignment="center"
-            Margin="0 0 160 0"
+            Margin="130 0 160 0"
             >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -193,32 +193,5 @@
                 </Style>
             </Button.Resources>
         </Button>
-        
-        
-        <Button 
-            Content="Cancel"
-            Grid.ColumnSpan="3"
-            Grid.Column="0" 
-            Grid.Row="5" 
-            Click="Cancel_Click" 
-            FontSize="18"
-            Width="130"
-            Height="50"
-            FontWeight="Bold"
-            VerticalAlignment="Top"
-            HorizontalAlignment="center"
-            Margin="160 0 0 0"
-            >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-
-
     </Grid>
 </Page>

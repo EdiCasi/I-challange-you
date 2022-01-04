@@ -1,4 +1,7 @@
-﻿using I_challenge_you_3._0.Models;
+﻿using I_challenge_you_3._0.DataAccessLayers;
+using I_challenge_you_3._0.Models;
+using I_challenge_you_3._0.UserControls;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -15,7 +18,9 @@ namespace I_challenge_you_3._0.Pages
             InitializeComponent();
             DataContext = this;
             this.friend = friend;
-            switch(this.friend.Status)
+            userImage.ImageSource = friend.Image;
+            username.Content = friend.Username;
+            switch (this.friend.Status)
             {
                 case "Available":
                     this.statusColor = new SolidColorBrush(Colors.Green);
@@ -27,11 +32,20 @@ namespace I_challenge_you_3._0.Pages
                     this.statusColor = new SolidColorBrush(Colors.Red);
                     break;
             }
+            LoadPosts();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        public void LoadPosts()
         {
-            NavigationService.Navigate(MainWindow.HomePage);
+            List<Post> posts = PostDAL.getOwnPosts(this.friend.IdUser);
+
+            foreach (var post in posts)
+            {
+                post.ContentType = "";
+                LiteDisplayPost displayPost = new LiteDisplayPost(post, this);
+                displayPost.Padding = new Thickness(10);
+                postPanel.Children.Add(displayPost);
+            }
         }
     }
 }

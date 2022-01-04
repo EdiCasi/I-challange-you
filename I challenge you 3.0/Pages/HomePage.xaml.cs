@@ -30,17 +30,9 @@ namespace I_challenge_you_3._0
         {
             InitializeComponent();
             DataContext = this;
-            userImage.ImageSource = MainWindow.LoggedUser.Image;
             LoadPosts();
-            LoadNotificationCount();
         }
 
-        public void LoadNotificationCount()
-        {
-            int c = NotificationDAL.GetNotificationCount(MainWindow.LoggedUser.IdUser) + (
-                                UserDAL.getUserPendingFriends(MainWindow.LoggedUser.IdUser).Count() > 0 ? 1 : 0);
-            notifCount.count.Content = Math.Min(c, 99).ToString();
-        }
         public void LoadPosts()
         {
             List<Post> posts = PostDAL.getPosts(MainWindow.LoggedUser.IdUser);
@@ -51,36 +43,6 @@ namespace I_challenge_you_3._0
                 displayPost.Padding = new Thickness(10);
                 postPanel.Children.Add(displayPost);
             }
-        }
-
-        private void Profile_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ProfilePage());
-        }
-
-        private void NewPost_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new PostOrChallengePage());
-        }
-
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SearchPage());
-        }
-
-        private void Friends_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new FriendsPage());
-        }
-        private void Messages_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new MessagesPage());
-        }
-
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.LoggedUser = null;
-            NavigationService.Navigate(new LoginPage());
         }
     }
 }

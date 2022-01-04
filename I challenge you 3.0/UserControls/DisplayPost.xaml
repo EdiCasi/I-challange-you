@@ -240,7 +240,16 @@
                         FontSize="18"
                         Content="0"
                         Visibility="Visible"/>
-
+                        <Button 
+                            Height="25"
+                        Content="See more"
+                        Grid.Column="8"
+                        Click="SeeMore_Click"
+                        HorizontalAlignment="Right"
+                        FontSize="13" 
+                        FontWeight="Bold"
+                        Foreground="Black"
+                        />
                     </Grid>
                 </Border>
             </StackPanel>

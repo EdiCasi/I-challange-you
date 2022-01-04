@@ -6,12 +6,12 @@
       xmlns:local="clr-namespace:I_challenge_you_3._0.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Width="1000"
+      Width="880"
       Height="600"
       Title="ProfilePage"
       Background="Turquoise">
     <Grid>
-        <Grid Margin="59,46,787,327" Background="AliceBlue">
+        <Grid Margin="59,46,670,350" Background="AliceBlue">
             <Label Name="username" FontWeight="Bold" FontSize="20" Content="test" HorizontalAlignment="Left" Margin="10,135,0,0" HorizontalContentAlignment ="Center"  VerticalAlignment="Top" RenderTransformOrigin="0.464,3.155" Height="39" Width="134"/>
         </Grid>
 
@@ -23,17 +23,17 @@
             BorderThickness="1"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Margin="84,69,816,0"
+            Margin="84,69,694,0"
             MouseDown="Image_Click">
             <Border.Background>
                 <ImageBrush Stretch="Fill" x:Name="userImage"/>
             </Border.Background>
         </Border>
         
-        <Grid Margin="241,46,52,480" Background="AliceBlue">
-            <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,29,0,0"/>
-            <TextBox Name="Username" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="153,29,0,0" RenderTransformOrigin="0.401,-2.443"/>
-            <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="440,29,0,0" Click="EditUsername_Click">
+        <Grid Margin="241,56,52,480" Background="Transparent">
+            <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,26,0,0"/>
+            <TextBox Name="Username" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="156,29,0,0" RenderTransformOrigin="0.401,-2.443"/>
+            <Button Name="EditUsername" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="440,30,0,0" Click="EditUsername_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter 
@@ -43,14 +43,14 @@
                 </Button.Resources>
             </Button>
         </Grid>
-        <Grid Margin="241,120,52,412" Background="LightGray">
+        <Grid Margin="241,110,52,412" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="328*"/>
                 <ColumnDefinition Width="379*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0"/>
-            <TextBox Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="154,25,0,0" Grid.ColumnSpan="2"/>
-            <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="111,25,0,0" Click="EditEmail_Click" Grid.Column="1">
+            <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,23,0,0"/>
+            <TextBox Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="241" Margin="156,25,0,0" Grid.ColumnSpan="2"/>
+            <Button Name="EditEmail" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="170,26,0,0" Click="EditEmail_Click" Grid.Column="1">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter 
@@ -60,11 +60,11 @@
                 </Button.Resources>
             </Button>
         </Grid>
-        <Grid Margin="241,188,52,351" Background="AliceBlue">
-            <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-            <ComboBox Name="Statuses" HorizontalAlignment="Left" Margin="156,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Grid Margin="241,168,52,351" Background="Transparent">
+            <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,16,0,0"/>
+            <ComboBox Name="Statuses" HorizontalAlignment="Left" Margin="156,19,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
         </Grid>
-        <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="253,276,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click">
+        <Button Name="ChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="253,230,0,0" VerticalAlignment="Top" Width="137" Height="20" Click="ChangePassword_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter 
@@ -74,25 +74,13 @@
             </Button.Resources>
         </Button>
 
-        <Button
-            Height="35"
-            Width="100"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Margin="0 0 0 50"
-            Content="Back"
-            FontSize="18"
-            FontWeight="Bold"
-            Click="Back_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <ScrollViewer Margin="59 270 52 50"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="postPanel"
+                Margin="0 0 0 40"
+            ></StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

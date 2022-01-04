@@ -27,7 +27,8 @@ namespace I_challenge_you_3._0.Pages
         {
             InitializeComponent();
             NotificationDAL.UpdateNotificationsSeen(MainWindow.LoggedUser.IdUser, true);
-            MainWindow.HomePage.LoadNotificationCount();
+            MainPage mainPage = new MainPage();
+            mainPage.LoadNotificationCount();
             LoadFriendRequests();
             LoadNotifications();
         }
@@ -98,9 +99,9 @@ namespace I_challenge_you_3._0.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(MainWindow.HomePage);
+            NavigationService.Navigate(MainWindow.MainPage);
         }
-        
+
         private void Friends_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new FriendsPage());

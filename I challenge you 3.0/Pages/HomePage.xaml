@@ -8,159 +8,18 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="HomePage"
-      Background="Turquoise">
+      Background="Turquoise"
+      Width="880"
+      Height="600">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="120"/>
-        </Grid.ColumnDefinitions>
-
-        <Border 
-            Grid.Column="1"
-            BorderBrush="Black"
-            BorderThickness="2 0 0 0">
-            <Rectangle Fill="Coral"/>
-        </Border>
-
         <ScrollViewer 
-            Grid.Column="0"
+            Margin="10 10 10 10"
             VerticalScrollBarVisibility="Hidden">
             <StackPanel
                 x:Name="postPanel"
                 Margin="0 0 0 40"
             ></StackPanel>
         </ScrollViewer>
-
-        <Border 
-            CornerRadius="50"
-            Grid.Column="1"
-            Height="100"
-            Width="100"
-            BorderBrush="Black"
-            BorderThickness="1"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Margin="0 10 0 0"
-            MouseDown="Profile_Click">
-            <Border.Background>
-                <ImageBrush x:Name="userImage"/>
-            </Border.Background>
-        </Border>
-
-        <Button
-            Grid.Column="1"
-            Height="50"
-            Width="50"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Margin="0 120 0 0"
-            Click="NewPost_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-            <Image Source="pack://application:,,,/Resources/Images/PlusIcon.png"/>
-        </Button>
-
-        <Button
-            Grid.Column="1"
-            Height="50"
-            Width="50"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Margin="0 190 0 0"
-            Click="Search_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-            <Image Source="pack://application:,,,/Resources/Images/Search Icon.png"/>
-        </Button>
-
-        <Button
-            Grid.Column="1"
-            Height="50"
-            Width="50"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Margin="0 260 0 0"
-            Click="Friends_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-            <Image Source="pack://application:,,,/Resources/Images/Friends Icon.png"/>
-        </Button>
-
-        <Button
-            Grid.Column="1"
-            Height="50"
-            Width="50"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Margin="0 330 0 0"
-            Click="Messages_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-            <Image Source="pack://application:,,,/Resources/Images/Messages Icon.png"/>
-        </Button>
-
-        <uc:Notifications
-            x:Name="notifCount"
-            Grid.Column="1"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Margin="0 400 0 0"
-            ></uc:Notifications>
-
-        <Button
-            Grid.Column="1"
-            Height="50"
-            Width="50"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Margin="0 0 0 10"
-            Click="Logout_Click"
-        >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius"
-                        Value="10"></Setter>
-                </Style>
-            </Button.Resources>
-            <Image Source="pack://application:,,,/Resources/Images/Logout Icon.png"/>
-        </Button>
     </Grid>
 </Page>
